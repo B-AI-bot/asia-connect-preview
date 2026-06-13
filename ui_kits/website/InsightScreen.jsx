@@ -15,7 +15,7 @@ function InsightScreen({ go, openAgent, bandTheme }) {
 
   return (
     <div>
-      <section className="container" style={{ paddingTop: 'clamp(2.5rem,2rem+3vw,4.5rem)', paddingBottom: 0 }}>
+      <section className="container" style={{ paddingTop: 'clamp(2.5rem,2rem + 3vw,4.5rem)', paddingBottom: 0 }}>
         <div style={{ maxWidth: 'var(--container-narrow)', margin: '0 auto' }}>
           <div style={{ display: 'flex', gap: 12, marginBottom: 22 }}>
             <Badge tone="brass">Reference</Badge>
@@ -31,8 +31,8 @@ function InsightScreen({ go, openAgent, bandTheme }) {
         </div>
       </section>
 
-      <section className="container" style={{ paddingBlock: 'clamp(2rem,1.5rem+2vw,3.5rem)' }}>
-        <div style={{ maxWidth: 'var(--container-narrow)', margin: '0 auto', display: 'grid', gridTemplateColumns: '200px 1fr', gap: 'clamp(1.5rem,1rem+3vw,4rem)', alignItems: 'start' }}>
+      <section className="container" style={{ paddingBlock: 'clamp(2rem,1.5rem + 2vw,3.5rem)' }}>
+        <div style={{ maxWidth: 'var(--container-narrow)', margin: '0 auto', display: 'grid', gridTemplateColumns: '200px 1fr', gap: 'clamp(1.5rem,1rem + 3vw,4rem)', alignItems: 'start' }}>
           <nav style={{ position: 'sticky', top: 100, display: 'flex', flexDirection: 'column', gap: 2 }}>
             <span className="coord" style={{ color: 'var(--text-faint)', marginBottom: 10 }}>On this page</span>
             {TOC.map((t, i) => (

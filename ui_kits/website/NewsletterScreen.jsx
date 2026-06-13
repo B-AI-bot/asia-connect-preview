@@ -37,12 +37,12 @@ function NewsletterScreen({ go, openAgent, bandTheme }) {
       {/* Masthead */}
       <section className="ac-band" data-theme={bandTheme}>
         <div className="ac-grid-bg" style={{ WebkitMaskImage: 'radial-gradient(120% 130% at 80% 10%, #000 35%, transparent 80%)', maskImage: 'radial-gradient(120% 130% at 80% 10%, #000 35%, transparent 80%)' }} />
-        <div className="container" style={{ position: 'relative', paddingBlock: 'clamp(2.5rem,2rem+3vw,4.5rem)', maxWidth: 'var(--container-narrow)' }}>
+        <div className="container" style={{ position: 'relative', paddingBlock: 'clamp(2.5rem,2rem + 3vw,4.5rem)', maxWidth: 'var(--container-narrow)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border)', paddingBottom: 20, flexWrap: 'wrap', gap: 12 }}>
             <span className="coord" style={{ color: 'var(--text-faint)' }}>Asia-Connect Executive Partners</span>
             <span className="coord" style={{ color: 'var(--accent-strong)' }}>Issue No. 01</span>
           </div>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(2.6rem,1.6rem+4vw,4.6rem)', lineHeight: 0.98, letterSpacing: '-0.03em', color: 'var(--text-strong)', margin: '26px 0 0' }}>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(2.6rem,1.6rem + 4vw,4.6rem)', lineHeight: 0.98, letterSpacing: '-0.03em', color: 'var(--text-strong)', margin: '26px 0 0' }}>
             The Asia Operator
           </h1>
           <p style={{ marginTop: 18, maxWidth: '54ch', fontSize: 'var(--text-lead)', color: 'var(--text-body)', lineHeight: 1.5 }}>
@@ -52,7 +52,7 @@ function NewsletterScreen({ go, openAgent, bandTheme }) {
       </section>
 
       {/* Issue */}
-      <section className="container" style={{ paddingBlock: 'clamp(2.5rem,2rem+3vw,4.5rem)' }}>
+      <section className="container" style={{ paddingBlock: 'clamp(2.5rem,2rem + 3vw,4.5rem)' }}>
         <div className="ac-nl-body" style={{ maxWidth: '68ch', margin: '0 auto' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, marginBottom: 22, flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
@@ -119,7 +119,7 @@ function NewsletterScreen({ go, openAgent, bandTheme }) {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, margin: '28px 0', padding: '24px 26px', background: 'var(--surface-sunken)', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)' }}>
               {[['40%', 'Local content · 2026'], ['60%', 'Local content · 2029'], ['~$6B', 'Regional EV market, 2026']].map(([v, l]) => (
                 <div key={l}>
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.8rem,1.3rem+1.6vw,2.6rem)', lineHeight: 0.9, color: 'var(--text-strong)' }}>{v}</div>
+                  <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.8rem,1.3rem + 1.6vw,2.6rem)', lineHeight: 0.9, color: 'var(--text-strong)' }}>{v}</div>
                   <div className="coord" style={{ color: 'var(--text-muted)', marginTop: 8 }}>{l}</div>
                 </div>
               ))}
@@ -159,7 +159,7 @@ function NewsletterScreen({ go, openAgent, bandTheme }) {
             <Sub>Where I would start</Sub>
             <p>If you are staring at one of these deadlines, start with the first question: who on the ground can actually say yes. Tell me which market you are working in, and I will tell you what I would watch first.</p>
 
-            <div style={{ margin: '28px 0', padding: 'clamp(1.5rem,1rem+2vw,2.2rem)', background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 20, flexWrap: 'wrap', boxShadow: 'var(--shadow-sm)' }}>
+            <div style={{ margin: '28px 0', padding: 'clamp(1.5rem,1rem + 2vw,2.2rem)', background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 20, flexWrap: 'wrap', boxShadow: 'var(--shadow-sm)' }}>
               <div>
                 <Kicker accent style={{ marginBottom: 8 }}>Reply to this issue</Kicker>
                 <div style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h3)', color: 'var(--text-strong)' }}>Which market are you working in?</div>
@@ -181,7 +181,7 @@ function NewsletterScreen({ go, openAgent, bandTheme }) {
 
       {/* subscribe footer band */}
       <section className="ac-band" data-theme={bandTheme} style={{ borderTop: '1px solid var(--border)' }}>
-        <div className="container" style={{ paddingBlock: 'clamp(2.5rem,2rem+3vw,4rem)', maxWidth: 'var(--container-narrow)', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div className="container" style={{ paddingBlock: 'clamp(2.5rem,2rem + 3vw,4rem)', maxWidth: 'var(--container-narrow)', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <Kicker accent style={{ marginBottom: 16 }}>The Asia Operator</Kicker>
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'var(--text-h1)', color: 'var(--text-strong)', margin: 0, maxWidth: '22ch' }}>
             One operator’s field note, once a month.

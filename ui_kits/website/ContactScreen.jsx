@@ -9,8 +9,8 @@ function ContactScreen({ go, prefill, bandTheme }) {
       <div className="ac-meridian" style={{ left: '64%' }} />
       <div className="ac-node" style={{ left: 'calc(64% - 6px)', top: '30%' }} />
 
-      <div className="container" style={{ position: 'relative', paddingBlock: 'clamp(3rem,2rem+4vw,6rem)' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(2rem,1rem+5vw,6rem)', alignItems: 'start' }}>
+      <div className="container" style={{ position: 'relative', paddingBlock: 'clamp(3rem,2rem + 4vw,6rem)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(2rem,1rem + 5vw,6rem)', alignItems: 'start' }}>
           <div>
             <Kicker tick accent style={{ marginBottom: 24 }}>Send a brief</Kicker>
             <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'var(--text-display-3)', lineHeight: 1.06, letterSpacing: '-0.022em', color: 'var(--text-strong)', margin: 0, maxWidth: '16ch' }}>
@@ -34,7 +34,7 @@ function ContactScreen({ go, prefill, bandTheme }) {
             </div>
           </div>
 
-          <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', padding: 'clamp(1.5rem,1rem+2vw,2.5rem)', boxShadow: 'var(--shadow-lg)' }}>
+          <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', padding: 'clamp(1.5rem,1rem + 2vw,2.5rem)', boxShadow: 'var(--shadow-lg)' }}>
             {sent ? (
               <div style={{ padding: '40px 8px', textAlign: 'center' }}>
                 <Badge tone="success" dot>Received</Badge>

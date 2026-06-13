@@ -19,10 +19,10 @@ function HomeScreen({ go, openAgent, bandTheme }) {
         <span className="coord" style={{ position: 'absolute', top: '46%', left: 'calc(72% + 16px)', color: 'var(--accent)' }}>SGP · 1°17′N</span>
         <span className="coord" style={{ position: 'absolute', top: 40, right: 'var(--gutter)', color: 'var(--text-faint)' }}>103°50′E</span>
 
-        <div className="container" style={{ position: 'relative', paddingTop: 'clamp(5.5rem,4.5rem+2vw,7rem)', paddingBottom: 'clamp(2.5rem,2rem+2vw,3.5rem)' }}>
+        <div className="container" style={{ position: 'relative', paddingTop: 'clamp(5.5rem,4.5rem + 2vw,7rem)', paddingBottom: 'clamp(2.5rem,2rem + 2vw,3.5rem)' }}>
           <div style={{ maxWidth: '23ch' }}>
             <Kicker tick accent style={{ marginBottom: 18 }}>Executive Interim · Singapore</Kicker>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(2.4rem,1.4rem+2.4vw,3.5rem)', lineHeight: 1.05, letterSpacing: '-0.025em', color: 'var(--text-strong)', fontOpticalSizing: 'auto', margin: 0 }}>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(2.4rem,1.4rem + 2.4vw,3.5rem)', lineHeight: 1.05, letterSpacing: '-0.025em', color: 'var(--text-strong)', fontOpticalSizing: 'auto', margin: 0 }}>
               The bridge between your <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>HQ</span> and Asia.
             </h1>
           </div>
@@ -34,7 +34,7 @@ function HomeScreen({ go, openAgent, bandTheme }) {
             <Button variant="outline" size="lg" onClick={() => go('services')}>How we work</Button>
           </div>
 
-          <div style={{ display: 'flex', gap: 'clamp(1.5rem,1rem+3vw,4rem)', marginTop: 'clamp(1.5rem,1rem+1.5vw,2.25rem)', paddingTop: 22, borderTop: '1px solid var(--border)', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 'clamp(1.5rem,1rem + 3vw,4rem)', marginTop: 'clamp(1.5rem,1rem + 1.5vw,2.25rem)', paddingTop: 22, borderTop: '1px solid var(--border)', flexWrap: 'wrap' }}>
             <Stat value={D.facts.deploy} label="To deploy a principal" />
             <Stat value={D.facts.partners} label="Senior partners" sub="across 13 markets" />
             <Stat value="20+" label="Years led in region" />
@@ -46,7 +46,7 @@ function HomeScreen({ go, openAgent, bandTheme }) {
       {/* ---------------- SERVICES ---------------- */}
       <section className="section container">
         <div className="ac-eyebrow"><Kicker index="№ 01">What we do</Kicker><div className="ac-rule-grow" /></div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 'clamp(1.5rem,1rem+3vw,4rem)', alignItems: 'end', marginBottom: 48 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 'clamp(1.5rem,1rem + 3vw,4rem)', alignItems: 'end', marginBottom: 48 }}>
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'var(--text-display-3)', lineHeight: 1.06, letterSpacing: '-0.02em', color: 'var(--text-strong)', margin: 0 }}>
             Three ways we step in — each one accountable for an outcome, not a deck.
           </h2>
@@ -66,7 +66,7 @@ function HomeScreen({ go, openAgent, bandTheme }) {
 
       {/* ---------------- CONCIERGE TEASER ---------------- */}
       <section className="ac-band" data-theme={bandTheme} style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
-        <div className="container section" style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 'clamp(2rem,1rem+4vw,5rem)', alignItems: 'center' }}>
+        <div className="container section" style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 'clamp(2rem,1rem + 4vw,5rem)', alignItems: 'center' }}>
           <div>
             <Kicker tick accent style={{ marginBottom: 22 }}>New · Routing concierge</Kicker>
             <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'var(--text-display-3)', lineHeight: 1.06, letterSpacing: '-0.02em', color: 'var(--text-strong)', margin: 0, maxWidth: '18ch' }}>
@@ -92,7 +92,7 @@ function HomeScreen({ go, openAgent, bandTheme }) {
       {/* ---------------- SECTORS ---------------- */}
       <section className="section container">
         <div className="ac-eyebrow"><Kicker index="№ 02">Where we operate</Kicker><div className="ac-rule-grow" /></div>
-        <div style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.2fr', gap: 'clamp(1.5rem,1rem+3vw,4rem)', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.2fr', gap: 'clamp(1.5rem,1rem + 3vw,4rem)', alignItems: 'start' }}>
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'var(--text-h1)', lineHeight: 1.1, letterSpacing: '-0.02em', color: 'var(--text-strong)', margin: 0 }}>
             Senior experience across the sectors that drive Asia.
           </h2>
@@ -105,7 +105,7 @@ function HomeScreen({ go, openAgent, bandTheme }) {
       {/* ---------------- CHAIRMAN ---------------- */}
       <section style={{ background: 'var(--surface-sunken)' }}>
         <div className="container section">
-          <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'clamp(1.5rem,1rem+3vw,3.5rem)', alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 'clamp(1.5rem,1rem + 3vw,3.5rem)', alignItems: 'start' }}>
             <Avatar name="Patrick Laredo" size={92} ring />
             <div>
               <Kicker style={{ marginBottom: 20 }}>From the Chairman</Kicker>
@@ -124,7 +124,7 @@ function HomeScreen({ go, openAgent, bandTheme }) {
       {/* ---------------- CTA ---------------- */}
       <section className="ac-band" data-theme={bandTheme} style={{ borderTop: '1px solid var(--border)' }}>
         <div className="ac-grid-bg" style={{ WebkitMaskImage: 'radial-gradient(120% 120% at 50% 30%, #000 30%, transparent 72%)', maskImage: 'radial-gradient(120% 120% at 50% 30%, #000 30%, transparent 72%)' }} />
-        <div className="container" style={{ position: 'relative', paddingBlock: 'clamp(3.5rem,2rem+5vw,6rem)', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div className="container" style={{ position: 'relative', paddingBlock: 'clamp(3.5rem,2rem + 5vw,6rem)', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <Kicker tick accent style={{ marginBottom: 24 }}>Let’s find out how we can help</Kicker>
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'var(--text-display-2)', lineHeight: 1.05, letterSpacing: '-0.025em', color: 'var(--text-strong)', margin: 0, maxWidth: '18ch', textWrap: 'balance' }}>
             Tell us what you’re facing.

@@ -25,7 +25,7 @@ function ServicesScreen({ go, openAgent, bandTheme }) {
     <div>
       <section className="ac-band" data-theme={bandTheme}>
         <div className="ac-grid-bg" style={{ WebkitMaskImage: 'radial-gradient(110% 120% at 85% 20%, #000 35%, transparent 78%)', maskImage: 'radial-gradient(110% 120% at 85% 20%, #000 35%, transparent 78%)' }} />
-        <div className="container" style={{ position: 'relative', paddingBlock: 'clamp(3rem,2rem+5vw,6rem)' }}>
+        <div className="container" style={{ position: 'relative', paddingBlock: 'clamp(3rem,2rem + 5vw,6rem)' }}>
           <Kicker tick accent style={{ marginBottom: 22 }}>Services</Kicker>
           <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'var(--text-display-2)', lineHeight: 1.04, letterSpacing: '-0.025em', color: 'var(--text-strong)', margin: 0, maxWidth: '20ch' }}>
             Senior leadership, deployed where it’s decisive.
@@ -39,8 +39,8 @@ function ServicesScreen({ go, openAgent, bandTheme }) {
       <section className="container" style={{ paddingBlock: 'var(--section-y)' }}>
         <div style={{ display: 'grid', gap: 2 }}>
           {DETAIL.map((d, i) => (
-            <div key={d.n} style={{ display: 'grid', gridTemplateColumns: '88px 1fr 1fr', gap: 'clamp(1rem,0.5rem+2vw,3rem)', padding: 'clamp(2rem,1rem+2vw,3rem) 0', borderTop: i === 0 ? 'none' : '1px solid var(--border)', alignItems: 'start' }}>
-              <span style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.4rem,1.6rem+2vw,3.4rem)', color: 'var(--accent)', lineHeight: 0.9 }}>{d.n}</span>
+            <div key={d.n} style={{ display: 'grid', gridTemplateColumns: '88px 1fr 1fr', gap: 'clamp(1rem,0.5rem + 2vw,3rem)', padding: 'clamp(2rem,1rem + 2vw,3rem) 0', borderTop: i === 0 ? 'none' : '1px solid var(--border)', alignItems: 'start' }}>
+              <span style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.4rem,1.6rem + 2vw,3.4rem)', color: 'var(--accent)', lineHeight: 0.9 }}>{d.n}</span>
               <div>
                 <Kicker style={{ marginBottom: 12 }}>{d.k}</Kicker>
                 <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'var(--text-h1)', lineHeight: 1.1, letterSpacing: '-0.02em', color: 'var(--text-strong)', margin: '0 0 6px' }}>{d.t}</h2>
@@ -79,7 +79,7 @@ function ServicesScreen({ go, openAgent, bandTheme }) {
       </section>
 
       <section className="container section">
-        <div style={{ display: 'grid', gridTemplateColumns: '0.7fr 1.3fr', gap: 'clamp(1.5rem,1rem+3vw,4rem)', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '0.7fr 1.3fr', gap: 'clamp(1.5rem,1rem + 3vw,4rem)', alignItems: 'start' }}>
           <div>
             <Kicker index="№ 02" style={{ marginBottom: 16 }}>Common questions</Kicker>
             <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'var(--text-h1)', lineHeight: 1.1, letterSpacing: '-0.02em', color: 'var(--text-strong)', margin: 0 }}>

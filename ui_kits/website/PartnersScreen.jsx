@@ -20,7 +20,7 @@ function PartnersScreen({ go, openAgent, bandTheme }) {
     <div>
       <section className="ac-band" data-theme={bandTheme}>
         <div className="ac-grid-bg" style={{ WebkitMaskImage: 'radial-gradient(110% 120% at 20% 30%, #000 35%, transparent 78%)', maskImage: 'radial-gradient(110% 120% at 20% 30%, #000 35%, transparent 78%)' }} />
-        <div className="container" style={{ position: 'relative', paddingBlock: 'clamp(3rem,2rem+5vw,6rem)' }}>
+        <div className="container" style={{ position: 'relative', paddingBlock: 'clamp(3rem,2rem + 5vw,6rem)' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 0.7fr', gap: 40, alignItems: 'end' }}>
             <div>
               <Kicker tick accent style={{ marginBottom: 22 }}>The Partners</Kicker>
@@ -71,7 +71,7 @@ function PartnersScreen({ go, openAgent, bandTheme }) {
       </section>
 
       <section className="ac-band" data-theme={bandTheme} style={{ borderTop: '1px solid var(--border)' }}>
-        <div className="container" style={{ paddingBlock: 'clamp(3rem,2rem+4vw,5rem)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
+        <div className="container" style={{ paddingBlock: 'clamp(3rem,2rem + 4vw,5rem)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'var(--text-h1)', color: 'var(--text-strong)', margin: 0, maxWidth: '24ch' }}>
             Not sure who you need? Let the concierge match you.
           </h2>
