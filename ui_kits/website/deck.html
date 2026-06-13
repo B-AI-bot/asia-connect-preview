@@ -21,7 +21,6 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--ink-900);}
 body{font-family:var(--font-text);-webkit-font-smoothing:antialiased;}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer}
-/* deck mechanics */
 .deck{position:fixed;inset:0;overflow:hidden;}
 .track{display:flex;height:100%;transition:transform .55s cubic-bezier(.16,1,.3,1);}
 @media (prefers-reduced-motion:reduce){.track{transition:none}}
@@ -34,16 +33,16 @@ button{font:inherit;cursor:pointer}
 .node{position:absolute;z-index:1;width:12px;height:12px;border-radius:50%;background:var(--brass-500);box-shadow:0 0 0 7px color-mix(in oklab,var(--brass-500) 16%,transparent);right:14%;top:24%;}
 .kick{font-family:var(--font-mono);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-500);display:flex;align-items:center;gap:12px;margin-bottom:22px;}
 .s-ink .kick{color:var(--brass-400);}
-.kick .tick{width:22px;height:2px;background:currentColor;display:inline-block;}
+.kick .tick{width:22px;height:2px;background:currentColor;display:inline-block;flex:none;}
 h1{font-family:var(--font-display);font-weight:400;font-size:clamp(2.4rem,1.1rem + 4.6vw,5rem);line-height:1.02;letter-spacing:-.025em;color:var(--paper);margin:0;}
 .s-bone h1{color:var(--ink-800);}
 h2{font-family:var(--font-display);font-weight:400;font-size:clamp(2rem,1.1rem + 3.4vw,3.9rem);line-height:1.04;letter-spacing:-.022em;color:var(--paper);margin:0;}
 .s-bone h2{color:var(--ink-800);}
-.lead{font-size:clamp(1.05rem,.95rem + .7vw,1.45rem);line-height:1.55;margin:26px 0 0;max-width:60ch;color:var(--bone-200);}
+.lead{font-size:clamp(1.05rem,.95rem + .7vw,1.45rem);line-height:1.55;margin:26px 0 0;max-width:62ch;color:var(--bone-200);}
 .s-bone .lead{color:#4A4234;}
 .em{font-style:italic;color:var(--brass-400);}
 .s-bone .em{color:var(--brass-600);}
-.rows{margin:30px 0 0;display:flex;flex-direction:column;gap:16px;max-width:62ch;}
+.rows{margin:30px 0 0;display:flex;flex-direction:column;gap:16px;max-width:64ch;}
 .row{display:flex;gap:16px;align-items:baseline;font-size:clamp(1rem,.9rem + .5vw,1.3rem);line-height:1.45;}
 .row .n{font-family:var(--font-mono);color:var(--brass-500);flex:none;font-size:.85em;}
 .s-ink .row .n{color:var(--brass-400);}
@@ -54,7 +53,7 @@ h2{font-family:var(--font-display);font-weight:400;font-size:clamp(2rem,1.1rem +
 .stat{margin-top:34px;display:flex;align-items:baseline;gap:18px;}
 .stat .big{font-family:var(--font-display);font-weight:500;font-size:clamp(3rem,2rem + 5vw,6rem);line-height:.9;color:var(--brass-500);}
 .s-ink .stat .big{color:var(--brass-400);}
-.stat .lbl{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;color:var(--stone-500);max-width:22ch;text-transform:uppercase;}
+.stat .lbl{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;color:var(--stone-500);max-width:24ch;text-transform:uppercase;}
 .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px;}
 .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-text);font-weight:600;font-size:1.05rem;padding:14px 24px;border-radius:4px;border:1px solid transparent;transition:transform .16s,background .16s,border-color .16s,color .16s;}
 .btn:active{transform:scale(.985)}
@@ -67,14 +66,16 @@ h2{font-family:var(--font-display);font-weight:400;font-size:clamp(2rem,1.1rem +
 .seelive{margin-top:30px;font-family:var(--font-mono);font-size:13px;letter-spacing:.04em;}
 .seelive a{color:var(--brass-500);border-bottom:1px solid color-mix(in oklab,var(--brass-500) 45%,transparent);padding-bottom:1px;}
 .s-ink .seelive a{color:var(--brass-400);border-color:color-mix(in oklab,var(--brass-400) 45%,transparent);}
-/* top bar */
 .bar{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;align-items:center;gap:12px;height:62px;padding:0 clamp(1.25rem,1rem + 2vw,3rem);background:color-mix(in oklab,var(--ink-900) 55%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--ink-600);}
 .bar .nm{font-family:var(--font-display);font-weight:500;font-size:17px;color:var(--paper);letter-spacing:-.01em;}
 .bar .sub{font-family:var(--font-mono);font-size:8px;letter-spacing:.26em;text-transform:uppercase;color:var(--brass-400);}
 .bar svg{width:30px;height:30px;color:var(--paper);}
-.bar .live{margin-left:auto;font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--bone-200);border:1px solid var(--ink-600);border-radius:999px;padding:8px 15px;}
+.bar .right{margin-left:auto;display:flex;align-items:center;gap:12px;}
+.langtoggle{display:inline-flex;gap:2px;border:1px solid var(--ink-600);border-radius:999px;padding:3px;}
+.langtoggle button{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;padding:6px 12px;border:none;background:none;color:var(--bone-200);border-radius:999px;}
+.langtoggle button.on{background:var(--brass-500);color:var(--ink-900);}
+.bar .live{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--bone-200);border:1px solid var(--ink-600);border-radius:999px;padding:8px 15px;}
 .bar .live:hover{border-color:var(--brass-400);color:var(--brass-400);}
-/* footer nav */
 .nav{position:fixed;bottom:0;left:0;right:0;z-index:30;display:flex;align-items:center;gap:18px;height:64px;padding:0 clamp(1.25rem,1rem + 2vw,3rem);background:color-mix(in oklab,var(--ink-900) 55%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--ink-600);}
 .dots{display:flex;gap:9px;align-items:center;}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--ink-600);border:none;padding:0;transition:background .2s,transform .2s;}
@@ -92,7 +93,13 @@ h2{font-family:var(--font-display);font-weight:400;font-size:clamp(2rem,1.1rem +
 <div class="bar">
   <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="32" r="26.2" stroke="currentColor" stroke-width="1.6"/><ellipse cx="32" cy="32" rx="11.6" ry="26.2" stroke="currentColor" stroke-width="1.15"/><line x1="6" y1="32" x2="58" y2="32" stroke="currentColor" stroke-width="1.15"/><line x1="32" y1="6" x2="32" y2="58" stroke="currentColor" stroke-width="1.15"/><circle cx="43.6" cy="29.4" r="3.5" fill="#CDA85F"/></svg>
   <div><div class="nm">Asia&#8209;Connect</div><div class="sub">Executive Partners</div></div>
-  <a class="live" href="index.html">Open the live site &#8599;</a>
+  <div class="right">
+    <div class="langtoggle" id="lang" role="group" aria-label="Language">
+      <button data-lang="en" class="on">EN</button>
+      <button data-lang="fr">FR</button>
+    </div>
+    <a class="live" href="index.html" data-i18n="bar.live">Open the live site &#8599;</a>
+  </div>
 </div>
 
 <div class="deck">
@@ -101,12 +108,12 @@ h2{font-family:var(--font-display);font-weight:400;font-size:clamp(2rem,1.1rem +
     <!-- 1 cover -->
     <section class="s-ink slide"><div class="grid"></div>
       <div class="inner">
-        <div class="kick"><span class="tick"></span>For Patrick Laredo &amp; Franck Euvrard &nbsp;·&nbsp; SGP 1°17′N</div>
-        <h1>Become the firm <span class="em">the AI recommends.</span></h1>
-        <p class="lead">A 360 visibility plan for Asia-Connect Executive Partners. Built, not just proposed: the site behind this deck is already live.</p>
+        <div class="kick"><span class="tick"></span><span data-i18n="c.kick">For Patrick Laredo &amp; Franck Euvrard &nbsp;·&nbsp; SGP 1°17′N</span></div>
+        <h1 data-i18n="c.h1">Become the firm <span class="em">the AI recommends.</span></h1>
+        <p class="lead" data-i18n="c.lead">A 360 visibility plan for Asia-Connect Executive Partners. Built, not just proposed: the site behind this deck is already live.</p>
         <div class="cta">
-          <button class="btn btn-p" data-next>Start &#8594;</button>
-          <a class="btn btn-o" href="index.html">Open the live site &#8599;</a>
+          <button class="btn btn-p" data-next data-i18n="c.start">Start &#8594;</button>
+          <a class="btn btn-o" href="index.html" data-i18n="c.live">Open the live site &#8599;</a>
         </div>
       </div>
     </section>
@@ -114,78 +121,78 @@ h2{font-family:var(--font-display);font-weight:400;font-size:clamp(2rem,1.1rem +
     <!-- 2 the shift -->
     <section class="s-bone slide">
       <div class="inner">
-        <div class="kick"><span class="tick"></span>The shift</div>
-        <h2>Your buyers stopped Googling. They ask the AI.</h2>
-        <p class="lead">A board facing a stalled plant in Vietnam, a sudden CFO exit in Singapore, a localization deadline in Indonesia, now asks ChatGPT, Perplexity or Gemini one question: who can run this. The AI answers with a name. Today it is not yours.</p>
+        <div class="kick"><span class="tick"></span><span data-i18n="s2.kick">The shift</span></div>
+        <h2 data-i18n="s2.h">Your buyers stopped Googling. They ask the AI.</h2>
+        <p class="lead" data-i18n="s2.lead">A board facing a stalled plant in Vietnam, a sudden CFO exit in Singapore, a localization deadline in Indonesia, now asks ChatGPT, Perplexity or Gemini one question: who can run this. The AI answers with a name. Today it is not yours.</p>
       </div>
     </section>
 
     <!-- 3 the opening -->
     <section class="s-ink slide"><div class="grid"></div>
       <div class="inner">
-        <div class="kick"><span class="tick"></span>The opening</div>
-        <h2>Nobody owns this category yet.</h2>
+        <div class="kick"><span class="tick"></span><span data-i18n="s3.kick">The opening</span></div>
+        <h2 data-i18n="s3.h">Nobody owns this category yet.</h2>
         <div class="rows">
-          <div class="row"><span class="n">01</span><span>No competitor publishes the comparison your buyers actually search.</span></div>
-          <div class="row"><span class="n">02</span><span>"Executive leadership transition in Southeast Asia" has no owner. The seat is empty.</span></div>
-          <div class="row"><span class="n">03</span><span>Your partners ran it for real. CEO in Pune, Deputy CEO in Hanoi, programs from Tokyo. That proof cannot be faked.</span></div>
+          <div class="row"><span class="n">01</span><span data-i18n="s3.r1">No competitor publishes the comparison your buyers actually search.</span></div>
+          <div class="row"><span class="n">02</span><span data-i18n="s3.r2">"Executive leadership transition in Southeast Asia" has no owner. The seat is empty.</span></div>
+          <div class="row"><span class="n">03</span><span data-i18n="s3.r3">Your partners ran it for real. CEO in Pune, Deputy CEO in Hanoi, programs from Tokyo. That proof cannot be faked.</span></div>
         </div>
-        <p class="lead">The first credible, operator-authored source wins the citation. That is the seat we take.</p>
+        <p class="lead" data-i18n="s3.lead">The first credible, operator-authored source wins the citation. That is the seat we take.</p>
       </div>
     </section>
 
     <!-- 4 already built -->
     <section class="s-bone slide">
       <div class="inner">
-        <div class="kick"><span class="tick"></span>Already built</div>
-        <h2>This is not a proposal. It is a preview.</h2>
-        <p class="lead">A working version of your future site: your brand, your real roster, a routing concierge that turns a visitor's situation into the right partner, the newsletter, and live lead capture. Click through it now.</p>
-        <div class="cta"><a class="btn btn-p" href="index.html">Explore the live site &#8599;</a></div>
-        <p class="seelive">Try it: describe a situation to the concierge, flip the newsletter to Photo or Sketch, download the EV checklist.</p>
+        <div class="kick"><span class="tick"></span><span data-i18n="s4.kick">Already built</span></div>
+        <h2 data-i18n="s4.h">This is not a proposal. It is a preview.</h2>
+        <p class="lead" data-i18n="s4.lead">A working version of your future site: your brand, your real roster, a routing concierge that turns a visitor's situation into the right partner, the newsletter, and live lead capture. Click through it now.</p>
+        <div class="cta"><a class="btn btn-p" href="index.html" data-i18n="s4.btn">Explore the live site &#8599;</a></div>
+        <p class="seelive" data-i18n="s4.see">Try it: describe a situation to the concierge, flip the newsletter to Photo or Sketch, download the EV checklist.</p>
       </div>
     </section>
 
     <!-- 5 the unlock -->
     <section class="s-ink slide"><div class="grid"></div><div class="node"></div>
       <div class="inner">
-        <div class="kick"><span class="tick"></span>The unlock</div>
-        <h2>First, the AI has to be able to <span class="em">read</span> you.</h2>
-        <p class="lead">Most modern sites are invisible to the AI engines: they never run the code that draws the page, so they see a blank. We rebuild yours answer-first and machine-readable, so ChatGPT, Perplexity, Gemini and Grok can actually quote it.</p>
-        <div class="stat"><span class="big">4 / 5</span><span class="lbl">AI engines cannot read a standard site today</span></div>
+        <div class="kick"><span class="tick"></span><span data-i18n="s5.kick">The unlock</span></div>
+        <h2 data-i18n="s5.h">First, the AI has to be able to <span class="em">read</span> you.</h2>
+        <p class="lead" data-i18n="s5.lead">Most modern sites are invisible to the AI engines: they never run the code that draws the page, so they see a blank. We rebuild yours answer-first and machine-readable, so ChatGPT, Perplexity, Gemini and Grok can actually quote it.</p>
+        <div class="stat"><span class="big">4 / 5</span><span class="lbl" data-i18n="s5.lbl">AI engines cannot read a standard site today</span></div>
       </div>
     </section>
 
     <!-- 6 the engine -->
     <section class="s-bone slide">
       <div class="inner">
-        <div class="kick"><span class="tick"></span>The 360 engine</div>
-        <h2>Publish the answers. Get repeated. Get cited.</h2>
+        <div class="kick"><span class="tick"></span><span data-i18n="s6.kick">The 360 engine</span></div>
+        <h2 data-i18n="s6.h">Publish the answers. Get repeated. Get cited.</h2>
         <div class="rows">
-          <div class="row"><span class="n">01</span><span>Own the answers your buyers search, authored by your named operators.</span></div>
-          <div class="row"><span class="n">02</span><span>Repeat the same facts everywhere the AI reads: directories, profiles, press, the newsletter.</span></div>
-          <div class="row"><span class="n">03</span><span>The engines lock it in by consensus and start naming Asia-Connect.</span></div>
+          <div class="row"><span class="n">01</span><span data-i18n="s6.r1">Own the answers your buyers search, authored by your named operators.</span></div>
+          <div class="row"><span class="n">02</span><span data-i18n="s6.r2">Repeat the same facts everywhere the AI reads: directories, profiles, press, the newsletter.</span></div>
+          <div class="row"><span class="n">03</span><span data-i18n="s6.r3">The engines lock it in by consensus and start naming Asia-Connect.</span></div>
         </div>
-        <p class="lead">Roughly nine in ten AI citations come from sources beyond your own site. We build that chorus around you.</p>
+        <p class="lead" data-i18n="s6.lead">Roughly nine in ten AI citations come from sources beyond your own site. We build that chorus around you.</p>
       </div>
     </section>
 
     <!-- 7 the result -->
     <section class="s-ink slide"><div class="grid"></div>
       <div class="inner">
-        <div class="kick"><span class="tick"></span>The result</div>
-        <h2>ChatGPT becomes your <span class="em">best salesperson.</span></h2>
-        <p class="lead">When a qualified buyer asks, the AI names Asia-Connect and sends them to your concierge. It routes them to the right partner and proposes the call. Search intent in, a booked mandate out, while you sleep.</p>
+        <div class="kick"><span class="tick"></span><span data-i18n="s7.kick">The result</span></div>
+        <h2 data-i18n="s7.h">ChatGPT becomes your <span class="em">best salesperson.</span></h2>
+        <p class="lead" data-i18n="s7.lead">When a qualified buyer asks, the AI names Asia-Connect and sends them to your concierge. It routes them to the right partner and proposes the call. Search intent in, a booked mandate out, while you sleep.</p>
       </div>
     </section>
 
     <!-- 8 the plan -->
     <section class="s-bone slide">
       <div class="inner">
-        <div class="kick"><span class="tick"></span>The plan</div>
-        <h2>Two moves.</h2>
+        <div class="kick"><span class="tick"></span><span data-i18n="s8.kick">The plan</span></div>
+        <h2 data-i18n="s8.h">Two moves.</h2>
         <div class="two">
-          <div class="col"><h3>This week</h3><p>A near-final site: the comparison your buyers search, the newsletter, the concierge capturing leads, all readable by the engines. The preview becomes real.</p></div>
-          <div class="col"><h3>Then, the Authority OS</h3><p>The full answer library, your authority published everywhere the AI looks, and a monthly report of which engine sent which lead. Visibility you can measure.</p></div>
+          <div class="col"><h3 data-i18n="s8.c1h">This week</h3><p data-i18n="s8.c1p">A near-final site: the comparison your buyers search, the newsletter, the concierge capturing leads, all readable by the engines. The preview becomes real.</p></div>
+          <div class="col"><h3 data-i18n="s8.c2h">Then, the Authority OS</h3><p data-i18n="s8.c2p">The full answer library, your authority published everywhere the AI looks, and a monthly report of which engine sent which lead. Visibility you can measure.</p></div>
         </div>
       </div>
     </section>
@@ -193,23 +200,23 @@ h2{font-family:var(--font-display);font-weight:400;font-size:clamp(2rem,1.1rem +
     <!-- 9 why now -->
     <section class="s-ink slide"><div class="grid"></div>
       <div class="inner">
-        <div class="kick"><span class="tick"></span>Why now</div>
-        <h2>The window is open. It will not stay open.</h2>
-        <p class="lead">The category is empty today. The moment a competitor publishes first, the citation is theirs and it compounds month after month. As you put it: time is of the essence.</p>
+        <div class="kick"><span class="tick"></span><span data-i18n="s9.kick">Why now</span></div>
+        <h2 data-i18n="s9.h">The window is open. It will not stay open.</h2>
+        <p class="lead" data-i18n="s9.lead">The category is empty today. The moment a competitor publishes first, the citation is theirs and it compounds month after month. As you put it: time is of the essence.</p>
       </div>
     </section>
 
     <!-- 10 close -->
     <section class="s-ink slide"><div class="grid"></div><div class="node" style="right:18%;top:30%"></div>
       <div class="inner">
-        <div class="kick"><span class="tick"></span>The ask</div>
-        <h1>Let's turn it <span class="em">on.</span></h1>
-        <p class="lead">Grab the seat while it is empty. We start this week, on the preview you just used.</p>
+        <div class="kick"><span class="tick"></span><span data-i18n="s10.kick">The ask</span></div>
+        <h1 data-i18n="s10.h">Let's turn it <span class="em">on.</span></h1>
+        <p class="lead" data-i18n="s10.lead">Grab the seat while it is empty. We start this week, on the preview you just used.</p>
         <div class="cta">
-          <a class="btn btn-p" href="index.html">Open the live site &#8599;</a>
-          <a class="btn btn-o" href="https://asia-connect.partners/contacts/" target="_blank" rel="noopener">Talk to us</a>
+          <a class="btn btn-p" href="index.html" data-i18n="s10.live">Open the live site &#8599;</a>
+          <a class="btn btn-o" href="https://asia-connect.partners/contacts/" target="_blank" rel="noopener" data-i18n="s10.talk">Talk to us</a>
         </div>
-        <p class="seelive">Asia-Connect Executive Partners &nbsp;·&nbsp; The bridge between your HQ and Asia &nbsp;·&nbsp; From 1°North.</p>
+        <p class="seelive" data-i18n="s10.see">Asia-Connect Executive Partners &nbsp;·&nbsp; The bridge between your HQ and Asia &nbsp;·&nbsp; From 1°North.</p>
       </div>
     </section>
 
@@ -226,6 +233,76 @@ h2{font-family:var(--font-display);font-weight:400;font-size:clamp(2rem,1.1rem +
 </div>
 
 <script>
+/* i18n: English is the inline default (no-JS fallback); French swaps in */
+(function(){
+  var ORIG={};
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ ORIG[el.getAttribute('data-i18n')]=el.innerHTML; });
+  var FR={
+    'bar.live':'Voir le site en ligne &#8599;',
+    'c.kick':'Pour Patrick Laredo et Franck Euvrard &nbsp;·&nbsp; SGP 1°17′N',
+    'c.h1':'Devenez le cabinet <span class="em">que l’IA recommande.</span>',
+    'c.lead':'Un plan de visibilité 360 pour Asia-Connect Executive Partners. Construit, pas seulement proposé : le site derrière cette présentation est déjà en ligne.',
+    'c.start':'Démarrer &#8594;',
+    'c.live':'Voir le site en ligne &#8599;',
+    's2.kick':'Le basculement',
+    's2.h':'Vos clients ne cherchent plus sur Google. Ils demandent à l’IA.',
+    's2.lead':'Un conseil face à une usine à l’arrêt au Vietnam, au départ soudain d’un directeur financier à Singapour, à une échéance de localisation en Indonésie, pose désormais une seule question à ChatGPT, Perplexity ou Gemini : qui peut gérer cela. L’IA répond par un nom. Aujourd’hui ce n’est pas le vôtre.',
+    's3.kick':'L’ouverture',
+    's3.h':'Personne ne possède encore cette catégorie.',
+    's3.r1':'Aucun concurrent ne publie la comparaison que vos clients recherchent vraiment.',
+    's3.r2':'« Transition de direction en Asie du Sud-Est » n’a aucun propriétaire. La place est libre.',
+    's3.r3':'Vos partenaires l’ont fait pour de vrai. PDG à Pune, directeur général adjoint à Hanoï, programmes pilotés depuis Tokyo. Cette preuve ne s’invente pas.',
+    's3.lead':'La première source crédible, signée par des opérateurs, remporte la citation. C’est cette place que nous prenons.',
+    's4.kick':'Déjà construit',
+    's4.h':'Ce n’est pas une proposition. C’est un aperçu.',
+    's4.lead':'Une version fonctionnelle de votre futur site : votre marque, votre vrai réseau de partenaires, un concierge qui oriente la situation d’un visiteur vers le bon partenaire, la newsletter, et la capture de prospects en direct. Parcourez-le maintenant.',
+    's4.btn':'Explorer le site en ligne &#8599;',
+    's4.see':'Essayez : décrivez une situation au concierge, basculez la newsletter en Photo ou Croquis, téléchargez la checklist VE.',
+    's5.kick':'Le déclic',
+    's5.h':'D’abord, l’IA doit pouvoir vous <span class="em">lire.</span>',
+    's5.lead':'La plupart des sites modernes sont invisibles pour les moteurs d’IA : ils n’exécutent pas le code qui affiche la page, ils ne voient donc rien. Nous reconstruisons le vôtre, orienté réponse et lisible par les machines, pour que ChatGPT, Perplexity, Gemini et Grok puissent le citer.',
+    's5.lbl':'moteurs d’IA ne lisent pas un site standard aujourd’hui',
+    's6.kick':'Le moteur 360',
+    's6.h':'Publiez les réponses. Soyez repris. Soyez cité.',
+    's6.r1':'Possédez les réponses que vos clients recherchent, signées par vos opérateurs nommés.',
+    's6.r2':'Répétez les mêmes faits partout où l’IA lit : annuaires, profils, presse, la newsletter.',
+    's6.r3':'Les moteurs verrouillent par consensus et se mettent à nommer Asia-Connect.',
+    's6.lead':'Près de neuf citations d’IA sur dix proviennent de sources autres que votre propre site. Nous bâtissons ce concert de voix autour de vous.',
+    's7.kick':'Le résultat',
+    's7.h':'ChatGPT devient votre <span class="em">meilleur commercial.</span>',
+    's7.lead':'Quand un client qualifié pose la question, l’IA nomme Asia-Connect et l’oriente vers votre concierge. Il l’envoie vers le bon partenaire et propose le rendez-vous. Une intention de recherche entre, un mandat réservé sort, pendant que vous dormez.',
+    's8.kick':'Le plan',
+    's8.h':'Deux mouvements.',
+    's8.c1h':'Cette semaine',
+    's8.c1p':'Un site quasi finalisé : la comparaison que vos clients recherchent, la newsletter, le concierge qui capte les prospects, le tout lisible par les moteurs. L’aperçu devient réel.',
+    's8.c2h':'Ensuite, l’Authority OS',
+    's8.c2p':'La bibliothèque complète de réponses, votre autorité publiée partout où l’IA regarde, et un rapport mensuel indiquant quel moteur a envoyé quel prospect. Une visibilité que vous pouvez mesurer.',
+    's9.kick':'Pourquoi maintenant',
+    's9.h':'La fenêtre est ouverte. Elle ne le restera pas.',
+    's9.lead':'La catégorie est vide aujourd’hui. Dès qu’un concurrent publie le premier, la citation lui revient et se cumule mois après mois. Comme vous le dites : le temps presse.',
+    's10.kick':'La proposition',
+    's10.h':'Mettons-le <span class="em">en marche.</span>',
+    's10.lead':'Prenez la place tant qu’elle est libre. Nous démarrons cette semaine, sur l’aperçu que vous venez d’utiliser.',
+    's10.live':'Voir le site en ligne &#8599;',
+    's10.talk':'Parlons-en',
+    's10.see':'Asia-Connect Executive Partners &nbsp;·&nbsp; Le pont entre votre siège et l’Asie &nbsp;·&nbsp; Depuis 1°Nord.'
+  };
+  function setLang(l){
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var k=el.getAttribute('data-i18n');
+      var v=(l==='fr' && FR[k]!=null)?FR[k]:ORIG[k];
+      if(v!=null) el.innerHTML=v;
+    });
+    document.documentElement.lang=l;
+    document.querySelectorAll('#lang button').forEach(function(b){ b.className=(b.getAttribute('data-lang')===l)?'on':''; });
+    try{localStorage.setItem('ac_deck_lang',l);}catch(e){}
+  }
+  document.querySelectorAll('#lang button').forEach(function(b){ b.onclick=function(){ setLang(b.getAttribute('data-lang')); }; });
+  var saved='en'; try{saved=localStorage.getItem('ac_deck_lang')||'en';}catch(e){}
+  setLang(saved);
+})();
+
+/* deck navigation */
 (function(){
   var track=document.getElementById('track');
   var slides=Array.prototype.slice.call(track.children);
@@ -238,8 +315,7 @@ h2{font-family:var(--font-display);font-weight:400;font-size:clamp(2rem,1.1rem +
   function go(x){ i=Math.max(0,Math.min(n-1,x)); track.style.transform='translateX('+(-i*100)+'vw)'; dots.forEach(function(el,k){el.className='dot'+(k===i?' on':'');}); count.textContent='№ '+pad(i+1)+' / '+pad(n); prev.disabled=(i===0); next.disabled=(i===n-1); }
   prev.onclick=function(){go(i-1);}; next.onclick=function(){go(i+1);};
   document.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(i+1);} else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1);} else if(e.key==='Home'){go(0);} else if(e.key==='End'){go(n-1);} });
-  document.querySelectorAll('[data-next]').forEach(function(b){b.onclick=function(){go(i+1);};});
-  // touch swipe
+  document.querySelectorAll('[data-next]').forEach(function(b){b.addEventListener('click',function(){go(i+1);});});
   var x0=null; track.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
   track.addEventListener('touchend',function(e){ if(x0===null)return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>50){ go(i+(dx<0?1:-1)); } x0=null; });
   window.addEventListener('resize',function(){track.style.transform='translateX('+(-i*100)+'vw)';});
