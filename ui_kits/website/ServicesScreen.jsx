@@ -1,23 +1,23 @@
-/* Asia-Connect website — Services (token-driven) */
+/* Asia-Connect website, Services (token-driven) */
 const { Button, Kicker, Card } = window.AsiaConnectDesignSystem_f91cce;
 
 const DETAIL = [
-  { n: '01', k: 'Interim Leadership', t: 'Executive on demand', lead: 'Leadership coverage when you cannot afford a gap.', body: 'When a key executive leaves unexpectedly — or you need senior capacity during recruitment, restructuring or a board mandate — we deploy an experienced C-suite leader who steps in, stabilises, and keeps strategy moving.', roles: ['Interim CEO', 'Interim CFO', 'Interim COO', 'Interim CHRO', 'Country Manager'] },
-  { n: '02', k: 'Project Delivery', t: 'Complex projects, led from within', lead: 'The projects that decide the year, run by operators.', body: 'From market entry and M&A to carve-outs and digital transformation, we embed senior program leaders who turn complex plans into delivered outcomes — with the cultural fluency that cross-border work demands.', roles: ['Market entry', 'M&A & integration', 'Carve-outs', 'Transformation', 'PMO leadership'] },
-  { n: '03', k: 'Crisis & Recovery', t: 'Stability, restored', lead: 'When the situation is serious, we take over.', body: 'In financial strain, operational disruption, disputes or reputational risk, we bring proven crisis managers who assess fast, take the wheel, manage stakeholders and lead the recovery — through to a clean hand-over.', roles: ['Turnaround', 'Restructuring', 'Dispute management', 'Business recovery'] },
+  { n: '01', k: 'Interim Leadership', t: 'Executive on demand', lead: 'Leadership coverage when you cannot afford a gap.', body: 'When a key executive leaves unexpectedly, or you need senior capacity during recruitment, restructuring or a board mandate, we deploy an experienced C-suite leader who steps in, stabilises, and keeps strategy moving.', roles: ['Interim CEO', 'Interim CFO', 'Interim COO', 'Interim CHRO', 'Country Manager'] },
+  { n: '02', k: 'Project Delivery', t: 'Complex projects, led from within', lead: 'The projects that decide the year, run by operators.', body: 'From market entry and M&A to carve-outs and digital transformation, we embed senior program leaders who turn complex plans into delivered outcomes, with the cultural fluency that cross-border work demands.', roles: ['Market entry', 'M&A & integration', 'Carve-outs', 'Transformation', 'PMO leadership'] },
+  { n: '03', k: 'Crisis & Recovery', t: 'Stability, restored', lead: 'When the situation is serious, we take over.', body: 'In financial strain, operational disruption, disputes or reputational risk, we bring proven crisis managers who assess fast, take the wheel, manage stakeholders and lead the recovery, through to a clean hand-over.', roles: ['Turnaround', 'Restructuring', 'Dispute management', 'Business recovery'] },
 ];
 
 const PROCESS = [
-  { s: 'Day 0–2', t: 'Assessment', d: 'A partner scopes the situation, the stakeholders and the decisive moves — in person, fast.' },
+  { s: 'Day 0–2', t: 'Assessment', d: 'A partner scopes the situation, the stakeholders and the decisive moves, in person, fast.' },
   { s: 'Week 1', t: 'Deployment', d: 'Your principal is in the seat, with clear milestones and a mandate the board has signed off.' },
   { s: 'Ongoing', t: 'Implementation', d: 'Hands-on execution, weekly governance, measurable progress against the milestones.' },
   { s: 'Exit', t: 'Hand-over', d: 'Knowledge transfer to permanent leadership; we leave the organisation stronger than we found it.' },
 ];
 
 const FAQ = [
-  { q: 'How fast can a principal start?', a: 'Typically within ten working days of an initial conversation — and faster in a genuine crisis. The first partner assessment can happen within 48 hours.' },
+  { q: 'How fast can a principal start?', a: 'Typically within ten working days of an initial conversation, and faster in a genuine crisis. The first partner assessment can happen within 48 hours.' },
   { q: 'How long is a typical engagement?', a: 'Most mandates run three to twelve months, structured around clear milestones and a defined hand-over, rather than an open-ended retainer.' },
-  { q: 'Where do you operate?', a: 'From our Singapore headquarters across the ASEAN — Singapore, Vietnam, Malaysia, Indonesia, Thailand, the Philippines — plus India, China, Japan, South Korea and the Gulf.' },
+  { q: 'Where do you operate?', a: 'From our Singapore headquarters across the ASEAN, Singapore, Vietnam, Malaysia, Indonesia, Thailand, the Philippines, plus India, China, Japan, South Korea and the Gulf.' },
 ];
 
 function ServicesScreen({ go, openAgent, bandTheme }) {
@@ -83,7 +83,7 @@ function ServicesScreen({ go, openAgent, bandTheme }) {
           <div>
             <Kicker index="№ 02" style={{ marginBottom: 16 }}>Common questions</Kicker>
             <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'var(--text-h1)', lineHeight: 1.1, letterSpacing: '-0.02em', color: 'var(--text-strong)', margin: 0 }}>
-              The answers buyers — and their research — ask for.
+              The answers buyers, and their research, ask for.
             </h2>
           </div>
           <div>

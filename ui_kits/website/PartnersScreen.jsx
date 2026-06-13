@@ -1,4 +1,4 @@
-/* Asia-Connect website — Partners (real roster, token-driven, filterable) */
+/* Asia-Connect website, Partners (real roster, token-driven, filterable) */
 const { Button, Kicker, Tag, Stat, Avatar } = window.AsiaConnectDesignSystem_f91cce;
 
 const FILTERS = [
@@ -28,7 +28,7 @@ function PartnersScreen({ go, openAgent, bandTheme }) {
                 A unified team of senior operators.
               </h1>
               <p style={{ marginTop: 22, maxWidth: '50ch', fontSize: 'var(--text-lead)', color: 'var(--text-body)', lineHeight: 'var(--leading-relaxed)' }}>
-                Most are based in the region; all have lived and led here. You engage a principal — not a profile from a pool.
+                Most are based in the region; all have lived and led here. You engage a principal, not a profile from a pool.
               </p>
             </div>
             <div style={{ display: 'flex', gap: 36, justifyContent: 'flex-end' }}>

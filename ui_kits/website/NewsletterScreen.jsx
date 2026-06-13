@@ -1,7 +1,7 @@
-/* Asia-Connect website — "The Asia Operator" newsletter, Issue No. 01 */
+/* Asia-Connect website, "The Asia Operator" newsletter, Issue No. 01 */
 const { Button, Kicker, Badge, Avatar } = window.AsiaConnectDesignSystem_f91cce;
 
-/* Editorial illustration — real art, with a photo / sketch toggle controlled at issue level. */
+/* Editorial illustration, real art, with a photo / sketch toggle controlled at issue level. */
 function NLImage({ idx, src, alt, caption, ratio = '16 / 9' }) {
   return (
     <figure className="ac-fig">
@@ -13,10 +13,27 @@ function NLImage({ idx, src, alt, caption, ratio = '16 / 9' }) {
   );
 }
 
+/* Newsletter subscribe: email capture (window.acCaptureLead) */
+function NLSubscribe() {
+  const [email, setEmail] = React.useState('');
+  const [done, setDone] = React.useState(false);
+  const sub = () => { const r = window.acCaptureLead && window.acCaptureLead(email, 'newsletter:asia-operator'); if (r && r.ok) setDone(true); };
+  if (done) return (
+    <div style={{ marginTop: 26, fontFamily: 'var(--font-display)', fontSize: 'var(--text-h3)', color: 'var(--accent-strong)' }}>You are on the list. The next issue lands in your inbox.</div>
+  );
+  return (
+    <form onSubmit={(e) => { e.preventDefault(); sub(); }} style={{ marginTop: 28, display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', width: '100%', maxWidth: 480 }}>
+      <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com"
+        style={{ flex: '1 1 220px', minWidth: 0, border: '1px solid var(--border)', borderRadius: 'var(--radius-sm)', padding: '12px 14px', background: 'var(--paper-raised)', fontFamily: 'var(--font-text)', fontSize: 'var(--text-base)', color: 'var(--ink-800)' }} />
+      <Button variant="primary" size="lg" arrow onClick={sub}>Subscribe</Button>
+    </form>
+  );
+}
+
 function NewsletterScreen({ go, openAgent, bandTheme }) {
   const [imgMode, setImgMode] = React.useState('photo');
   const IMG = {
-    hero:  { photo: 'img/ev-photo.jpg',    sketch: 'img/ev-sketch.jpg' },
+    hero:  { photo: 'img/ev-photo.jpg',   sketch: 'img/ev-sketch.jpg' },
     field: { photo: 'img/split-photo.jpg', sketch: 'img/split-sketch.jpg' },
   };
 
@@ -75,7 +92,7 @@ function NewsletterScreen({ go, openAgent, bandTheme }) {
             <Avatar name="Franck Euvrard" size={52} ring />
             <div>
               <div style={{ fontFamily: 'var(--font-text)', fontWeight: 600, color: 'var(--text-strong)' }}>Franck Euvrard</div>
-              <div className="coord" style={{ color: 'var(--text-faint)' }}>Partner — Mobility &amp; EV · Asia-Connect</div>
+              <div className="coord" style={{ color: 'var(--text-faint)' }}>Partner, Mobility &amp; EV · Asia-Connect</div>
             </div>
           </div>
 
@@ -85,7 +102,7 @@ function NewsletterScreen({ go, openAgent, bandTheme }) {
             alt="EV assembly line inside a Southeast-Asian factory at dusk, a wall clock and a regional map in the background"
             caption="The EV clock just started in Southeast Asia." />
 
-          {/* Field notes — TL;DR for skimmers */}
+          {/* Field notes, TL;DR for skimmers */}
           <div className="ac-fieldnotes">
             <div className="ac-fieldnotes-h">
               <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--accent)' }} />
@@ -189,9 +206,7 @@ function NewsletterScreen({ go, openAgent, bandTheme }) {
           <p style={{ marginTop: 16, maxWidth: '46ch', color: 'var(--text-body)', fontSize: 'var(--text-lg)', lineHeight: 1.6 }}>
             What actually happens on the ground in Asia, and what to do about it. No fluff, no decks.
           </p>
-          <div style={{ marginTop: 28, display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Button variant="primary" size="lg" arrow>Subscribe</Button>
-          </div>
+          <NLSubscribe />
           <span className="coord" style={{ marginTop: 26, color: 'var(--text-faint)' }}>You receive this because you subscribed or exchanged with Franck · Unsubscribe · Update preferences</span>
         </div>
       </section>

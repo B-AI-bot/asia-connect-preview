@@ -1,4 +1,4 @@
-/* Asia-Connect website — Contact (token-driven) */
+/* Asia-Connect website, Contact (token-driven) */
 const { Button, Kicker, Input, Textarea, Select, Badge } = window.AsiaConnectDesignSystem_f91cce;
 
 function ContactScreen({ go, prefill, bandTheme }) {
@@ -38,7 +38,7 @@ function ContactScreen({ go, prefill, bandTheme }) {
             {sent ? (
               <div style={{ padding: '40px 8px', textAlign: 'center' }}>
                 <Badge tone="success" dot>Received</Badge>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'var(--text-h2)', color: 'var(--text-strong)', margin: '18px 0 10px' }}>Thank you — we’ll be in touch.</h3>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'var(--text-h2)', color: 'var(--text-strong)', margin: '18px 0 10px' }}>Thank you, we’ll be in touch.</h3>
                 <p style={{ color: 'var(--text-muted)', maxWidth: '36ch', margin: '0 auto 24px' }}>A partner will read your note personally and respond within two working days.</p>
                 <Button variant="outline" onClick={() => setSent(false)}>Send another</Button>
               </div>

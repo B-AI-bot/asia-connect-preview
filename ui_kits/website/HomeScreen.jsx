@@ -1,11 +1,38 @@
-/* Asia-Connect website — Home (token-driven; reskins under both themes) */
+/* Asia-Connect website, Home (token-driven; reskins under both themes) */
 const { Button, Kicker, Card, Tag, Stat, Avatar } = window.AsiaConnectDesignSystem_f91cce;
 
 const SERVICES = [
-  { n: '01', k: 'Interim Leadership', t: 'Executive on demand', d: 'When a CEO, CFO or COO leaves unexpectedly, we deploy a seasoned principal in days — to hold the line, reassure the board, and keep strategy moving.' },
-  { n: '02', k: 'Project Delivery', t: 'Complex projects, led', d: 'Market entry, M&A, carve-outs and transformation — run from inside your teams by operators who have done it before, in-region.' },
+  { n: '01', k: 'Interim Leadership', t: 'Executive on demand', d: 'When a CEO, CFO or COO leaves unexpectedly, we deploy a seasoned principal in days, to hold the line, reassure the board, and keep strategy moving.' },
+  { n: '02', k: 'Project Delivery', t: 'Complex projects, led', d: 'Market entry, M&A, carve-outs and transformation, run from inside your teams by operators who have done it before, in-region.' },
   { n: '03', k: 'Crisis & Recovery', t: 'Stability, restored', d: 'In financial, operational or reputational distress, we take over, stabilise the situation, and lead the recovery through to a clean hand-over.' },
 ];
+
+/* Lead magnet: gated checklist download + email capture (window.acCaptureLead) */
+function LeadMagnet() {
+  const [email, setEmail] = React.useState('');
+  const [done, setDone] = React.useState(false);
+  const send = () => {
+    const r = window.acCaptureLead && window.acCaptureLead(email, 'lead-magnet:ev-checklist');
+    if (r && r.ok) { setDone(true); try { window.open('assets-dl/ev-localization-checklist.html', '_blank'); } catch (e) { /* popup blocked */ } }
+  };
+  if (done) return (
+    <div style={{ border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', background: 'var(--surface-sunken)', padding: 22 }}>
+      <div style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h3)', color: 'var(--text-strong)', marginBottom: 6 }}>On its way.</div>
+      <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)', margin: 0, lineHeight: 1.6 }}>Your checklist opened in a new tab. We have your email and will send the next issue of The Asia Operator.</p>
+    </div>
+  );
+  return (
+    <form onSubmit={(e) => { e.preventDefault(); send(); }} style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+      <label className="coord" style={{ color: 'var(--text-faint)' }}>Where should we send it?</label>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+        <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com"
+          style={{ flex: '1 1 200px', minWidth: 0, border: '1px solid var(--border)', borderRadius: 'var(--radius-sm)', padding: '12px 14px', background: 'var(--paper-raised)', fontFamily: 'var(--font-text)', fontSize: 'var(--text-base)', color: 'var(--text-strong)' }} />
+        <Button variant="primary" size="lg" arrow onClick={send}>Send it to me</Button>
+      </div>
+      <span className="coord" style={{ color: 'var(--text-faint)' }}>One email, no spam, unsubscribe anytime.</span>
+    </form>
+  );
+}
 
 function HomeScreen({ go, openAgent, bandTheme }) {
   const D = window.AC_DATA;
@@ -48,7 +75,7 @@ function HomeScreen({ go, openAgent, bandTheme }) {
         <div className="ac-eyebrow"><Kicker index="№ 01">What we do</Kicker><div className="ac-rule-grow" /></div>
         <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 'clamp(1.5rem,1rem + 3vw,4rem)', alignItems: 'end', marginBottom: 48 }}>
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'var(--text-display-3)', lineHeight: 1.06, letterSpacing: '-0.02em', color: 'var(--text-strong)', margin: 0 }}>
-            Three ways we step in — each one accountable for an outcome, not a deck.
+            Three ways we step in, each one accountable for an outcome, not a deck.
           </h2>
           <p style={{ fontSize: 'var(--text-lg)', color: 'var(--text-muted)', lineHeight: 'var(--leading-body)' }}>
             Every engagement is run by a partner who has held the seat before, with a clear assessment, implementation and hand-over framework.
@@ -73,7 +100,7 @@ function HomeScreen({ go, openAgent, bandTheme }) {
               Tell us the situation. We’ll route you to the right partner.
             </h2>
             <p style={{ marginTop: 20, fontSize: 'var(--text-lg)', color: 'var(--text-body)', lineHeight: 'var(--leading-relaxed)', maxWidth: '46ch' }}>
-              Describe what you’re facing in a sentence. The concierge reads the situation, points to the right service, and names the principal who has done it before — or books the call.
+              Describe what you’re facing in a sentence. The concierge reads the situation, points to the right service, and names the principal who has done it before, or books the call.
             </p>
             <div style={{ marginTop: 30 }}>
               <Button variant="primary" size="lg" arrow onClick={openAgent}>Describe your situation</Button>
@@ -83,7 +110,7 @@ function HomeScreen({ go, openAgent, bandTheme }) {
             <div className="coord" style={{ color: 'var(--text-faint)', marginBottom: 14 }}>◷ Concierge · sample</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <div style={{ alignSelf: 'flex-end', maxWidth: '85%', background: 'var(--accent)', color: 'var(--on-accent)', padding: '10px 14px', borderRadius: '12px 12px 3px 12px', fontSize: 'var(--text-sm)' }}>“EV local-content deadline in Indonesia, 2026. Behind on suppliers.”</div>
-              <div style={{ alignSelf: 'flex-start', maxWidth: '90%', background: 'var(--surface-sunken)', color: 'var(--text-body)', padding: '10px 14px', borderRadius: '12px 12px 12px 3px', fontSize: 'var(--text-sm)' }}>That’s an execution clock. I’d put <strong style={{ color: 'var(--text-strong)' }}>Franck Euvrard</strong> on it — Faurecia, VinFast, Tata. Shall I introduce you?</div>
+              <div style={{ alignSelf: 'flex-start', maxWidth: '90%', background: 'var(--surface-sunken)', color: 'var(--text-body)', padding: '10px 14px', borderRadius: '12px 12px 12px 3px', fontSize: 'var(--text-sm)' }}>That’s an execution clock. I’d put <strong style={{ color: 'var(--text-strong)' }}>Franck Euvrard</strong> on it: Faurecia, VinFast, Tata. Shall I introduce you?</div>
             </div>
           </div>
         </div>
@@ -110,14 +137,30 @@ function HomeScreen({ go, openAgent, bandTheme }) {
             <div>
               <Kicker style={{ marginBottom: 20 }}>From the Chairman</Kicker>
               <blockquote style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'var(--text-h2)', lineHeight: 1.32, letterSpacing: '-0.01em', color: 'var(--text-strong)', margin: 0, maxWidth: '40ch', textWrap: 'balance' }}>
-                “Asia is now central to global strategy. We run growth and transformation projects, provide true leaders, and secure results — across Asia. Time is of the essence.”
+                “Asia is now central to global strategy. We run growth and transformation projects, provide true leaders, and secure results, across Asia. Time is of the essence.”
               </blockquote>
               <div style={{ marginTop: 24, display: 'flex', alignItems: 'center', gap: 12 }}>
                 <span style={{ fontFamily: 'var(--font-text)', fontWeight: 600, color: 'var(--text-strong)' }}>Patrick Laredo</span>
-                <span className="coord" style={{ color: 'var(--text-faint)' }}>— Chairman &amp; Founder</span>
+                <span className="coord" style={{ color: 'var(--text-faint)' }}>Chairman &amp; Founder</span>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ---------------- LEAD MAGNET ---------------- */}
+      <section className="section container">
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.1fr) minmax(0,0.9fr)', gap: 'clamp(1.5rem,1rem + 3vw,4rem)', alignItems: 'center', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', background: 'var(--surface)', padding: 'clamp(1.5rem,1rem + 2vw,2.75rem)', boxShadow: 'var(--shadow-sm)' }}>
+          <div>
+            <Kicker accent style={{ marginBottom: 14 }}>Free download</Kicker>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'var(--text-h1)', lineHeight: 1.1, letterSpacing: '-0.02em', color: 'var(--text-strong)', margin: 0, maxWidth: '20ch' }}>
+              The 2026 Southeast Asia EV localization checklist
+            </h2>
+            <p style={{ marginTop: 16, fontSize: 'var(--text-lg)', color: 'var(--text-body)', lineHeight: 'var(--leading-body)', maxWidth: '46ch' }}>
+              The five questions, and the local-content deadlines, that decide whether you hit your target. One page, built from our operators’ field notes.
+            </p>
+          </div>
+          <LeadMagnet />
         </div>
       </section>
 
@@ -130,7 +173,7 @@ function HomeScreen({ go, openAgent, bandTheme }) {
             Tell us what you’re facing.
           </h2>
           <p style={{ marginTop: 22, maxWidth: '48ch', fontSize: 'var(--text-lg)', color: 'var(--text-body)', lineHeight: 'var(--leading-relaxed)' }}>
-            Whether it’s a sudden gap at the top, a project that must land, or a situation to recover — a principal will respond within two working days.
+            Whether it’s a sudden gap at the top, a project that must land, or a situation to recover, a principal will respond within two working days.
           </p>
           <div style={{ marginTop: 34, display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center' }}>
             <Button variant="primary" size="lg" arrow onClick={openAgent}>Ask the concierge</Button>

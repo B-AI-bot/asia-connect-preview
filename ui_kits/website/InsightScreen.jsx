@@ -1,4 +1,4 @@
-/* Asia-Connect website — Insight (reference-grade article; token-driven) */
+/* Asia-Connect website, Insight (reference-grade article; token-driven) */
 const { Button, Kicker, Badge, Stat } = window.AsiaConnectDesignSystem_f91cce;
 
 const TOC = ['Definition', 'When to engage', 'Interim vs. consulting', 'How it works in Asia', 'Key facts'];
@@ -48,12 +48,12 @@ function InsightScreen({ go, openAgent, bandTheme }) {
             <div style={{ borderLeft: '2px solid var(--accent)', paddingLeft: 22, marginBottom: 28 }}>
               <span className="coord" style={{ color: 'var(--accent-strong)' }}>Definition</span>
               <p style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-h3)', lineHeight: 1.4, color: 'var(--text-strong)', margin: '8px 0 0', maxWidth: '58ch' }}>
-                <strong style={{ fontWeight: 600 }}>Interim management</strong> is the temporary appointment of a seasoned executive to a senior role — to lead through transition, crisis or strategic change, and be accountable for the result.
+                <strong style={{ fontWeight: 600 }}>Interim management</strong> is the temporary appointment of a seasoned executive to a senior role, to lead through transition, crisis or strategic change, and be accountable for the result.
               </p>
             </div>
 
             <H id="definition" n="01">A working definition</H>
-            <P>Unlike a temporary placement that holds the fort, an interim executive operates at or near board level with the authority to make and own difficult decisions. They are independent — able to act in the company’s interest without the politics of an incumbent — and they are measured on outcomes, not advice.</P>
+            <P>Unlike a temporary placement that holds the fort, an interim executive operates at or near board level with the authority to make and own difficult decisions. They are independent, able to act in the company’s interest without the politics of an incumbent, and they are measured on outcomes, not advice.</P>
 
             <H id="when" n="02">When to engage one</H>
             <P>Boards typically reach for interim leadership in five moments: a sudden departure at the top; coverage during a recruitment or restructuring; a carve-out, acquisition or post-merger integration; a transformation that must land on time; or a crisis that needs a steady, experienced hand.</P>
@@ -66,10 +66,10 @@ function InsightScreen({ go, openAgent, bandTheme }) {
             </div>
 
             <H id="vs" n="03">Interim vs. consulting</H>
-            <P>A consultant advises and hands you a recommendation; an interim executive takes the seat and is accountable for delivering it. In Asia, where a global HQ and a local team can read the same situation very differently, that distinction matters — the interim is inside the organisation, bridging both.</P>
+            <P>A consultant advises and hands you a recommendation; an interim executive takes the seat and is accountable for delivering it. In Asia, where a global HQ and a local team can read the same situation very differently, that distinction matters, the interim is inside the organisation, bridging both.</P>
 
             <H id="asia" n="04">How it works in Asia</H>
-            <P>Cross-border mandates demand cultural and market fluency that cannot be improvised. The most effective interim leaders in the region have lived and led there — they understand local realities and global expectations, and move between them. That is the bridge Asia-Connect is built to be.</P>
+            <P>Cross-border mandates demand cultural and market fluency that cannot be improvised. The most effective interim leaders in the region have lived and led there, they understand local realities and global expectations, and move between them. That is the bridge Asia-Connect is built to be.</P>
 
             <div id="facts" style={{ marginTop: 36, padding: '26px 28px', background: 'var(--surface-sunken)', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)' }}>
               <Kicker style={{ marginBottom: 18 }}>Key facts</Kicker>

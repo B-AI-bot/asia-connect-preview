@@ -1,4 +1,4 @@
-/* Asia-Connect website — Routing Concierge
+/* Asia-Connect website, Routing Concierge
    A floating agent: reads a visitor's situation, routes to the right
    service + names the principal who has done it before. Scripted demo
    over the real routing map in data.js. */
@@ -31,7 +31,7 @@ function RoutingConcierge({ open, onClose, navigate, bandTheme }) {
   const greet = {
     role: 'agent',
     kind: 'text',
-    text: 'I’m the Asia-Connect concierge. In a sentence — what are you facing, and in which market? I’ll point you to the right partner.',
+    text: 'I’m the Asia-Connect concierge. In a sentence, what are you facing, and in which market? I’ll point you to the right partner.',
   };
 
   React.useEffect(() => {
@@ -53,7 +53,7 @@ function RoutingConcierge({ open, onClose, navigate, bandTheme }) {
       const route = matchRoute(text);
       setBusy(false);
       if (!route) {
-        push({ role: 'agent', kind: 'text', text: 'Got it. That could sit with a few of our principals — the fastest path is a two-line brief and a partner will route it personally within two working days.' });
+        push({ role: 'agent', kind: 'text', text: 'Got it. That could sit with a few of our principals, the fastest path is a two-line brief and a partner will route it personally within two working days.' });
         push({ role: 'agent', kind: 'fallback' });
         return;
       }

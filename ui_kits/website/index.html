@@ -1,19 +1,19 @@
-<!-- @dsCard group="Website" viewport="1280x880" name="Website — interactive UI kit" subtitle="Meridian ⇄ Almanac · Home · Services · Partners · Insight · Newsletter · Concierge" -->
+<!-- @dsCard group="Website" viewport="1280x880" name="Website, interactive UI kit" subtitle="Meridian ⇄ Almanac · Home · Services · Partners · Insight · Newsletter · Concierge" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta name="robots" content="noindex,nofollow">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Asia-Connect — Executive Partners</title>
+<title>Asia-Connect Executive Partners</title>
 <link rel="icon" href="../../assets/favicon.svg">
-<link rel="stylesheet" href="../../styles.css?v=4">
-<link rel="stylesheet" href="site.css?v=4">
+<link rel="stylesheet" href="../../styles.css?v=5">
+<link rel="stylesheet" href="site.css?v=5">
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<script src="../../_ds_bundle.js?v=4"></script>
-<script src="data.js?v=4"></script>
+<script src="../../_ds_bundle.js?v=5"></script>
+<script src="data.js?v=5"></script>
 <style>
   html, body { margin: 0; background: var(--bg); }
   .ac-screen-enter { animation: acFade var(--dur-slow) var(--ease-out); }
@@ -30,17 +30,39 @@
   .ac-launcher img { width: 26px; height: 26px; }
   .ac-launcher .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: acPulse 2.4s infinite; }
 </style>
+<style id="ac-extra">
+.ac-toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,16px);z-index:300;background:var(--ink-800,#15120D);color:var(--paper,#F6F1E7);border:1px solid var(--ink-600,#2A241B);border-radius:999px;padding:12px 20px;font-family:var(--font-text,system-ui);font-size:14px;box-shadow:0 12px 40px rgba(0,0,0,.3);opacity:0;transition:opacity .28s,transform .28s;pointer-events:none;max-width:90vw;text-align:center}
+.ac-toast.show{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){.ac-toast{transition:none}}
+</style>
+<script id="ac-capture">
+(function(){
+  function toast(msg){var t=document.createElement('div');t.className='ac-toast';t.textContent=msg;document.body.appendChild(t);requestAnimationFrame(function(){t.classList.add('show');});setTimeout(function(){t.classList.remove('show');setTimeout(function(){t.remove();},320);},3400);}
+  window.acToast=toast;
+  window.AC_LEAD_ENDPOINT=null;
+  window.acCaptureLead=function(email,source){
+    email=(email||'').trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){toast('Please enter a valid email.');return {ok:false};}
+    try{var k='ac_demo_leads',a=JSON.parse(localStorage.getItem(k)||'[]');a.push({email:email,source:source||'site',ts:new Date().toISOString()});localStorage.setItem(k,JSON.stringify(a));}catch(e){}
+    if(window.AC_LEAD_ENDPOINT){try{fetch(window.AC_LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,source:source})});}catch(e){}}
+    try{console.log('[lead captured]',source,email,'-- total',(window.acLeads&&window.acLeads().length));}catch(e){}
+    toast('Thanks. We will send it to '+email+'.');
+    return {ok:true};
+  };
+  window.acLeads=function(){try{return JSON.parse(localStorage.getItem('ac_demo_leads')||'[]');}catch(e){return[];}};
+})();
+</script>
 </head>
 <body>
 <div id="root"></div>
-<script type="text/babel" src="SiteChrome.jsx?v=4"></script>
-<script type="text/babel" src="RoutingConcierge.jsx?v=4"></script>
-<script type="text/babel" src="HomeScreen.jsx?v=4"></script>
-<script type="text/babel" src="ServicesScreen.jsx?v=4"></script>
-<script type="text/babel" src="PartnersScreen.jsx?v=4"></script>
-<script type="text/babel" src="InsightScreen.jsx?v=4"></script>
-<script type="text/babel" src="NewsletterScreen.jsx?v=4"></script>
-<script type="text/babel" src="ContactScreen.jsx?v=4"></script>
+<script type="text/babel" src="SiteChrome.jsx?v=5"></script>
+<script type="text/babel" src="RoutingConcierge.jsx?v=5"></script>
+<script type="text/babel" src="HomeScreen.jsx?v=5"></script>
+<script type="text/babel" src="ServicesScreen.jsx?v=5"></script>
+<script type="text/babel" src="PartnersScreen.jsx?v=5"></script>
+<script type="text/babel" src="InsightScreen.jsx?v=5"></script>
+<script type="text/babel" src="NewsletterScreen.jsx?v=5"></script>
+<script type="text/babel" src="ContactScreen.jsx?v=5"></script>
 <script type="text/babel" data-presets="env,react">
   const { useState } = React;
 

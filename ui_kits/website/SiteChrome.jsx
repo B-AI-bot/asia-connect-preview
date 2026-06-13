@@ -1,4 +1,4 @@
-/* Asia-Connect website — shared chrome (header + footer + brand switcher) */
+/* Asia-Connect website, shared chrome (header + footer + brand switcher) */
 const { Button } = window.AsiaConnectDesignSystem_f91cce;
 
 const NAV = [
@@ -57,7 +57,7 @@ function SiteFooter({ go, brand, openAgent, bandTheme }) {
               </div>
             </div>
             <p style={{ maxWidth: '30ch', color: 'var(--text-body)', fontSize: 'var(--text-base)', lineHeight: 'var(--leading-body)' }}>
-              The bridge between your HQ and Asia. Interim leadership, project delivery and crisis recovery — from 1°North.
+              The bridge between your HQ and Asia. Interim leadership, project delivery and crisis recovery, from 1°North.
             </p>
             <div className="coord" style={{ marginTop: 22, color: 'var(--text-faint)' }}>SGP · 1°17′N 103°50′E</div>
           </div>
@@ -78,8 +78,8 @@ function SiteFooter({ go, brand, openAgent, bandTheme }) {
           <div>
             <div className="ac-foot-h">Engage</div>
             <p style={{ color: 'var(--text-body)', fontSize: 'var(--text-sm)', lineHeight: 1.7, marginBottom: 14 }}>
-              Companies — <a style={{ color: 'var(--accent-strong)' }}>help@asia-connect.partners</a><br />
-              Candidates — <a style={{ color: 'var(--accent-strong)' }}>leaders@asia-connect.partners</a>
+              Companies: <a style={{ color: 'var(--accent-strong)' }}>help@asia-connect.partners</a><br />
+              Candidates: <a style={{ color: 'var(--accent-strong)' }}>leaders@asia-connect.partners</a>
             </p>
             <Button variant="primary" size="sm" arrow onClick={openAgent}>Ask the concierge</Button>
           </div>
