@@ -137,6 +137,15 @@
   color: var(--text-strong); text-wrap: balance;
 }
 
+/* ---- Illustration photo/sketch toggle (newsletter) ---- */
+.ac-imgtoggle { display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 3px 4px 3px 12px; background: color-mix(in oklab, var(--bg) 60%, transparent); }
+.ac-imgtoggle .lbl { font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); padding-right: 6px; }
+.ac-imgtoggle button { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; padding: 6px 13px; border: none; background: none; color: var(--text-muted); border-radius: var(--radius-pill); cursor: pointer; transition: color var(--dur-fast), background var(--dur-fast); }
+.ac-imgtoggle button.on { background: var(--accent); color: var(--on-accent); }
+
+/* anchor jumps clear the sticky header */
+[id] { scroll-margin-top: 96px; }
+
 @media (max-width: 860px) {
   .ac-nav { gap: 16px; }
   .ac-navlink, .ac-brandswitch { display: none; }

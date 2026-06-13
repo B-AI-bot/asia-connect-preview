@@ -1,31 +1,12 @@
 /* Asia-Connect website — "The Asia Operator" newsletter, Issue No. 01 */
 const { Button, Kicker, Badge, Avatar } = window.AsiaConnectDesignSystem_f91cce;
 
-/* Editorial illustration placeholder — carries a ready-to-paste image-gen
-   prompt and a copy button. Swap each <NLFigure> for real art in production. */
-function NLFigure({ idx, kind = 'Illustration', ratio = '16 / 9', title, caption, prompt }) {
-  const [done, setDone] = React.useState(false);
-  const STYLE = 'Editorial line illustration, warm ink charcoal with a single brass-gold accent on a cream/bone paper ground, fine hairline linework, restrained documentary feel, subtle paper grain, no text, no logos, generous negative space. ';
-  const full = STYLE + prompt;
-  const copy = () => {
-    try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(full).catch(() => {});
-      }
-    } catch (e) { /* clipboard unavailable — non-fatal */ }
-    setDone(true); setTimeout(() => setDone(false), 1600);
-  };
+/* Editorial illustration — real art, with a photo / sketch toggle controlled at issue level. */
+function NLImage({ idx, src, alt, caption, ratio = '16 / 9' }) {
   return (
     <figure className="ac-fig">
-      <div className="ac-fig-frame" style={{ aspectRatio: ratio }}>
-        <img className="ac-fig-seal" src="../../assets/mark.svg" alt="" />
-        <figcaption className="ac-fig-kind"><span className="dot" />{kind} · {ratio.replace(' ', '')}</figcaption>
-        {title && <div className="ac-fig-title">“{title}”</div>}
-        <div className="ac-fig-prompt">
-          <span className="pl">Prompt</span>
-          <span className="pt">{full}</span>
-          <button className={'ac-fig-copy' + (done ? ' done' : '')} onClick={copy}>{done ? '✓ Copied' : 'Copy'}</button>
-        </div>
+      <div style={{ overflow: 'hidden', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)', aspectRatio: ratio, background: 'var(--surface-sunken)', boxShadow: 'var(--shadow-sm)' }}>
+        <img src={src} alt={alt} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       </div>
       {caption && <div className="ac-fig-cap"><span className="idx">Fig. {idx}</span><span>{caption}</span></div>}
     </figure>
@@ -33,8 +14,22 @@ function NLFigure({ idx, kind = 'Illustration', ratio = '16 / 9', title, caption
 }
 
 function NewsletterScreen({ go, openAgent, bandTheme }) {
+  const [imgMode, setImgMode] = React.useState('photo');
+  const IMG = {
+    hero:  { photo: 'img/ev-photo.jpg',    sketch: 'img/ev-sketch.jpg' },
+    field: { photo: 'img/split-photo.jpg', sketch: 'img/split-sketch.jpg' },
+  };
+
   const Sub = ({ children }) => (
     <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'var(--text-h2)', lineHeight: 1.16, letterSpacing: '-0.018em', color: 'var(--text-strong)', margin: '46px 0 14px', textWrap: 'balance' }}>{children}</h2>
+  );
+
+  const Toggle = () => (
+    <div className="ac-imgtoggle" role="group" aria-label="Illustration style">
+      <span className="lbl">Illustrations</span>
+      <button className={imgMode === 'photo' ? 'on' : ''} onClick={() => setImgMode('photo')}>Photo</button>
+      <button className={imgMode === 'sketch' ? 'on' : ''} onClick={() => setImgMode('sketch')}>Sketch</button>
+    </div>
   );
 
   return (
@@ -51,7 +46,7 @@ function NewsletterScreen({ go, openAgent, bandTheme }) {
             The Asia Operator
           </h1>
           <p style={{ marginTop: 18, maxWidth: '54ch', fontSize: 'var(--text-lead)', color: 'var(--text-body)', lineHeight: 1.5 }}>
-            The operator’s view of doing business in Asia. Where the compliance newsletters tell you the rules, this one tells you what actually happens on the ground — and what to do about it.
+            The operator’s view of doing business in Asia. Where the compliance newsletters tell you the rules, this one tells you what actually happens on the ground, and what to do about it.
           </p>
         </div>
       </section>
@@ -59,10 +54,13 @@ function NewsletterScreen({ go, openAgent, bandTheme }) {
       {/* Issue */}
       <section className="container" style={{ paddingBlock: 'clamp(2.5rem,2rem+3vw,4.5rem)' }}>
         <div className="ac-nl-body" style={{ maxWidth: '68ch', margin: '0 auto' }}>
-          <div style={{ display: 'flex', gap: 12, marginBottom: 22, flexWrap: 'wrap' }}>
-            <Badge tone="brass">Mobility &amp; EV</Badge>
-            <Badge tone="neutral">Southeast Asia</Badge>
-            <span className="coord" style={{ color: 'var(--text-faint)', alignSelf: 'center' }}>June 2026 · 5 min read</span>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, marginBottom: 22, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+              <Badge tone="brass">Mobility &amp; EV</Badge>
+              <Badge tone="neutral">Southeast Asia</Badge>
+              <span className="coord" style={{ color: 'var(--text-faint)', alignSelf: 'center' }}>June 2026 · 5 min read</span>
+            </div>
+            <Toggle />
           </div>
 
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'var(--text-display-3)', lineHeight: 1.08, letterSpacing: '-0.022em', color: 'var(--text-strong)', margin: 0 }}>
@@ -81,12 +79,11 @@ function NewsletterScreen({ go, openAgent, bandTheme }) {
             </div>
           </div>
 
-          {/* HERO illustration */}
-          <NLFigure
-            idx="1" kind="Hero illustration" ratio="16 / 9"
-            title="The EV clock just started in Southeast Asia"
-            caption="Opening image — sets the ‘deadline with a date attached’ tone."
-            prompt="A modern EV assembly line inside a Southeast-Asian factory at dusk, a large wall clock and a regional map faintly visible in the background, a few workers mid-task; sense of a countdown beginning. Wide cinematic framing." />
+          {/* HERO image (photo / sketch) */}
+          <NLImage
+            idx="1" ratio="16 / 9" src={IMG.hero[imgMode]}
+            alt="EV assembly line inside a Southeast-Asian factory at dusk, a wall clock and a regional map in the background"
+            caption="The EV clock just started in Southeast Asia." />
 
           {/* Field notes — TL;DR for skimmers */}
           <div className="ac-fieldnotes">
@@ -95,8 +92,8 @@ function NewsletterScreen({ go, openAgent, bandTheme }) {
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-label)', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-strong)' }}>Field notes · the 30-second version</span>
             </div>
             {[
-              ['01', 'Incentives across SE Asia are now tied to local production — and the rules bite in 2026.'],
-              ['02', 'The hard part isn’t the engineering. It’s the pace — decisions made and acted on locally, fast.'],
+              ['01', 'Incentives across SE Asia are now tied to local production, and the rules bite in 2026.'],
+              ['02', 'The hard part is not the engineering. It is the pace: decisions made and acted on locally, fast.'],
               ['03', 'A local-content threshold is a deadline, not a target. Win it with someone on the ground, not another deck.'],
             ].map(([k, t]) => (
               <div key={k} className="ac-fieldnotes-li">
@@ -113,7 +110,7 @@ function NewsletterScreen({ go, openAgent, bandTheme }) {
             <p>I ran those operations on site, not over a video call from a head office. I led vehicle systems integration for ICONIQ Motors in Shanghai, then product development for VinFast’s full EV lineup in Hanoi, as Deputy CEO. Decisions I expected to argue over for a month in Europe were closed in a week, and the local team had moved on before head office had even booked the call.</p>
             <p>What European companies underestimate about EV in Asia is rarely the technology. It is the pace: how fast a decision has to be made and acted on. When I ran a global vehicle program out of Tokyo, from 2015 to 2017, with parts coming out of Mexico, Poland and China at once, the hard part was never the engineering. It was that the people closest to the work often could not move without a call to a head office eight time zones away.</p>
 
-            <blockquote className="ac-pullquote">That distance is the real tax on an Asian operation — and you don’t pay it down with a better strategy. You pay it down by letting the people on the spot decide, and decide fast.</blockquote>
+            <blockquote className="ac-pullquote">That distance is the real tax on an Asian operation, and you do not pay it down with a better strategy. You pay it down by letting the people on the spot decide, and decide fast.</blockquote>
 
             <Sub>What changed this quarter</Sub>
             <p>Indonesia now ties its import-duty and luxury-tax breaks to a local-production commitment, backed by a bank guarantee the carmaker forfeits if it does not deliver. Local content has to reach 40 percent in 2026 and 60 percent by 2029. BYD has started trial production at its Subang plant this year, and Chery opens its largest ASEAN factory in Vietnam in mid-2026. Thailand and Vietnam are pulling assembly onshore with their own subsidies and duty waivers.</p>
@@ -128,18 +125,17 @@ function NewsletterScreen({ go, openAgent, bandTheme }) {
               ))}
             </div>
 
-            <p>A local-content threshold is not a target you meet at your own pace. It is a deadline. Hitting those numbers means qualifying suppliers, fixing their quality, and standing up a line — usually faster than a European head office is used to moving. The companies that win in 2027 will be the ones that hit the number, not the ones with the best market-entry plan from 2025.</p>
+            <p>A local-content threshold is not a target you meet at your own pace. It is a deadline. Hitting those numbers means qualifying suppliers, fixing their quality, and standing up a line, usually faster than a European head office is used to moving. The companies that win in 2027 will be the ones that hit the number, not the ones with the best market-entry plan from 2025.</p>
 
             <Sub>What this looks like on the ground</Sub>
 
-            <NLFigure
-              idx="2" kind="Section illustration" ratio="3 / 2"
-              title="Month seven: the plan meets the plant"
-              caption="Breaks the longest text block — the ‘plan vs. reality’ beat."
-              prompt="Split-scene composition: on the left, a polished boardroom strategy slide; on the right, the messy reality of a factory floor with a supplier issue being worked out by hand. Visual tension between the clean plan and the real plant." />
+            <NLImage
+              idx="2" ratio="3 / 2" src={IMG.field[imgMode]}
+              alt="Split scene: a polished boardroom strategy slide on the left, the factory-floor reality on the right"
+              caption="Month seven: the plan meets the plant." />
 
             <p>I have watched this play out more than once. A European group commits to a localization target to protect its incentives. The strategy is sound. The plan is thorough. Then month seven arrives, and the plan runs into a supplier who does not deliver, a regulator nobody put in the slides, and a local team that sends every real decision back to Europe. The deadline holds. The progress is what slips.</p>
-            <p>What closes that gap is not another adviser, and it is not another deck. It is someone on the spot — yours or ours — who has done this before: who can qualify a supplier, read the regulator, and make the call on site this week instead of next quarter. That is the difference between a localization plan and a localized plant.</p>
+            <p>What closes that gap is not another adviser, and it is not another deck. It is someone on the spot, yours or ours, who has done this before: who can qualify a supplier, read the regulator, and make the call on site this week instead of next quarter. That is the difference between a localization plan and a localized plant.</p>
 
             {/* five questions */}
             <Sub>Five questions before you commit</Sub>
@@ -149,7 +145,7 @@ function NewsletterScreen({ go, openAgent, bandTheme }) {
                 'Who on the ground can make a binding decision without calling Europe first?',
                 'Have we qualified real suppliers, or only mapped them on a slide?',
                 'What is the true lead time to the threshold, counted backward from the deadline?',
-                'When something breaks at 2am local time, who fixes it — and do they already know the system?',
+                'When something breaks at 2am local time, who fixes it, and do they already know the system?',
                 'Who owns the local-content number by name, and what happens if it slips?',
               ].map((q, i) => (
                 <li key={i} style={{ display: 'flex', gap: 18, alignItems: 'baseline', padding: '16px 0', borderTop: '1px solid var(--border)' }}>
@@ -176,7 +172,7 @@ function NewsletterScreen({ go, openAgent, bandTheme }) {
             <div style={{ display: 'flex', gap: 18, alignItems: 'flex-start', borderTop: '1px solid var(--border)', paddingTop: 20 }}>
               <Avatar name="Franck Euvrard" size={64} ring />
               <p style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)', lineHeight: 1.65, margin: 0 }}>
-                Franck Euvrard, Asia-Connect Executive Partners. 30+ years building and running automotive and EV operations. Built and ran Faurecia’s automotive R&amp;D center in India as its CEO (Pune, 2006–2011), then Managing Director India. Ran a global vehicle program from Tokyo (2015–2017) with production across Mexico, Poland and China. Led vehicle systems integration for ICONIQ Motors in Shanghai. Deputy CEO, Product Development for VinFast’s full EV lineup in Hanoi. EVP Global Engineering at Tata Technologies. Most recently ran software-defined-vehicle development as KPIT Managing Director in France. French Foreign-Trade Advisor since 2021.
+                Franck Euvrard, Asia-Connect Executive Partners. 30+ years building and running automotive and EV operations. Built and ran Faurecia’s automotive R&amp;D center in India as its CEO (Pune, 2006 to 2011), then Managing Director India. Ran a global vehicle program from Tokyo (2015 to 2017) with production across Mexico, Poland and China. Led vehicle systems integration for ICONIQ Motors in Shanghai. Deputy CEO, Product Development for VinFast’s full EV lineup in Hanoi. EVP Global Engineering at Tata Technologies. Most recently ran software-defined-vehicle development as KPIT Managing Director in France. French Foreign-Trade Advisor since 2021.
               </p>
             </div>
           </div>

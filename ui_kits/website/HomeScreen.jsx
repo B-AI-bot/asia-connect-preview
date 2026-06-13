@@ -19,22 +19,22 @@ function HomeScreen({ go, openAgent, bandTheme }) {
         <span className="coord" style={{ position: 'absolute', top: '46%', left: 'calc(72% + 16px)', color: 'var(--accent)' }}>SGP · 1°17′N</span>
         <span className="coord" style={{ position: 'absolute', top: 40, right: 'var(--gutter)', color: 'var(--text-faint)' }}>103°50′E</span>
 
-        <div className="container" style={{ position: 'relative', paddingTop: 'clamp(4rem,3rem+6vw,8rem)', paddingBottom: 'clamp(3rem,2rem+5vw,6rem)' }}>
-          <div style={{ maxWidth: '17ch' }}>
-            <Kicker tick accent style={{ marginBottom: 26 }}>Executive Interim · Singapore</Kicker>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'var(--text-display-1)', lineHeight: 1.02, letterSpacing: '-0.025em', color: 'var(--text-strong)', fontOpticalSizing: 'auto', margin: 0 }}>
+        <div className="container" style={{ position: 'relative', paddingTop: 'clamp(5.5rem,4.5rem+2vw,7rem)', paddingBottom: 'clamp(2.5rem,2rem+2vw,3.5rem)' }}>
+          <div style={{ maxWidth: '23ch' }}>
+            <Kicker tick accent style={{ marginBottom: 18 }}>Executive Interim · Singapore</Kicker>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(2.4rem,1.4rem+2.4vw,3.5rem)', lineHeight: 1.05, letterSpacing: '-0.025em', color: 'var(--text-strong)', fontOpticalSizing: 'auto', margin: 0 }}>
               The bridge between your <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>HQ</span> and Asia.
             </h1>
           </div>
-          <p style={{ maxWidth: '52ch', marginTop: 28, fontSize: 'var(--text-lead)', lineHeight: 'var(--leading-relaxed)', color: 'var(--text-body)' }}>
-            A partner-led firm of senior operators who step in as interim executives, project leaders and crisis managers across Asia — and are accountable for the result. Not advice from a distance. Principals, on the ground.
+          <p style={{ maxWidth: '54ch', marginTop: 20, fontSize: 'var(--text-lg)', lineHeight: 'var(--leading-relaxed)', color: 'var(--text-body)' }}>
+            A partner-led firm of senior operators who step in as interim executives, project leaders and crisis managers across Asia, and are accountable for the result. Not advice from a distance. Principals, on the ground.
           </p>
-          <div style={{ display: 'flex', gap: 14, marginTop: 38, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 14, marginTop: 26, flexWrap: 'wrap' }}>
             <Button variant="primary" size="lg" arrow onClick={openAgent}>Ask the concierge</Button>
             <Button variant="outline" size="lg" onClick={() => go('services')}>How we work</Button>
           </div>
 
-          <div style={{ display: 'flex', gap: 'clamp(2rem,1rem+4vw,5rem)', marginTop: 'clamp(3rem,2rem+4vw,5.5rem)', paddingTop: 34, borderTop: '1px solid var(--border)', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 'clamp(1.5rem,1rem+3vw,4rem)', marginTop: 'clamp(1.5rem,1rem+1.5vw,2.25rem)', paddingTop: 22, borderTop: '1px solid var(--border)', flexWrap: 'wrap' }}>
             <Stat value={D.facts.deploy} label="To deploy a principal" />
             <Stat value={D.facts.partners} label="Senior partners" sub="across 13 markets" />
             <Stat value="20+" label="Years led in region" />
