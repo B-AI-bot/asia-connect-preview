@@ -34,6 +34,7 @@ function SiteHeader({ screen, go, onInk, brand, setBrand, openAgent }) {
           {NAV.map((n) => (
             <button key={n.id} className={'ac-navlink' + (screen === n.id ? ' active' : '')} onClick={() => go(n.id)}>{n.label}</button>
           ))}
+          <a className="ac-navlink" href="deck.html" style={{ color: 'var(--accent-strong)', fontWeight: 600 }}>The 360 plan</a>
           <BrandSwitch brand={brand} setBrand={setBrand} />
           <Button variant="primary" size="sm" arrow onClick={openAgent}>Ask the concierge</Button>
         </nav>
