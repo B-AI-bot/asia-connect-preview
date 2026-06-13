@@ -20,7 +20,7 @@ function HomeScreen({ go, openAgent, bandTheme }) {
         <span className="coord" style={{ position: 'absolute', top: 40, right: 'var(--gutter)', color: 'var(--text-faint)' }}>103°50′E</span>
 
         <div className="container" style={{ position: 'relative', paddingTop: 'clamp(5.5rem,4.5rem + 2vw,7rem)', paddingBottom: 'clamp(2.5rem,2rem + 2vw,3.5rem)' }}>
-          <div style={{ maxWidth: '23ch' }}>
+          <div style={{ maxWidth: '600px' }}>
             <Kicker tick accent style={{ marginBottom: 18 }}>Executive Interim · Singapore</Kicker>
             <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(2.4rem,1.4rem + 2.4vw,3.5rem)', lineHeight: 1.05, letterSpacing: '-0.025em', color: 'var(--text-strong)', fontOpticalSizing: 'auto', margin: 0 }}>
               The bridge between your <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>HQ</span> and Asia.
