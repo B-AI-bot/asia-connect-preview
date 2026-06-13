@@ -17,7 +17,8 @@ function NLImage({ idx, src, alt, caption, ratio = '16 / 9' }) {
 function NLSubscribe() {
   const [email, setEmail] = React.useState('');
   const [done, setDone] = React.useState(false);
-  const sub = () => { const r = window.acCaptureLead && window.acCaptureLead(email, 'newsletter:asia-operator'); if (r && r.ok) setDone(true); };
+  const sent = React.useRef(false);
+  const sub = () => { if (sent.current) return; const r = window.acCaptureLead && window.acCaptureLead(email, 'newsletter:asia-operator'); if (r && r.ok) { sent.current = true; setDone(true); } };
   if (done) return (
     <div style={{ marginTop: 26, fontFamily: 'var(--font-display)', fontSize: 'var(--text-h3)', color: 'var(--accent-strong)' }}>You are on the list. The next issue lands in your inbox.</div>
   );

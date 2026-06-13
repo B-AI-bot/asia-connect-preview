@@ -11,9 +11,11 @@ const SERVICES = [
 function LeadMagnet() {
   const [email, setEmail] = React.useState('');
   const [done, setDone] = React.useState(false);
+  const sent = React.useRef(false);
   const send = () => {
+    if (sent.current) return;
     const r = window.acCaptureLead && window.acCaptureLead(email, 'lead-magnet:ev-checklist');
-    if (r && r.ok) { setDone(true); try { window.open('assets-dl/ev-localization-checklist.html', '_blank'); } catch (e) { /* popup blocked */ } }
+    if (r && r.ok) { sent.current = true; setDone(true); try { window.open('assets-dl/ev-localization-checklist.html', '_blank'); } catch (e) { /* popup blocked */ } }
   };
   if (done) return (
     <div style={{ border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', background: 'var(--surface-sunken)', padding: 22 }}>
