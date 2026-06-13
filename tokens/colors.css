@@ -1,0 +1,126 @@
+/* ============================================================
+   Asia-Connect — Color System
+   Primary territory: "Meridian" — warm ink + bone + brass.
+   Base ramps first, semantic aliases second. Dark sections opt
+   in with [data-theme="ink"]; the default surface is bone/paper.
+   ============================================================ */
+
+:root {
+  /* ---- Ink (warm near-blacks) ---- */
+  --ink-900: #0E0C09;   /* deepest void — hero grounds, footers */
+  --ink-800: #15120D;   /* primary dark surface */
+  --ink-700: #1D1912;   /* raised dark surface */
+  --ink-600: #2A241B;   /* dark borders / hover on ink */
+  --ink-500: #3B3326;   /* muted strokes on ink */
+
+  /* ---- Stone (warm neutrals / text) ---- */
+  --stone-700: #4A4234; /* body text on light when softened */
+  --stone-600: #5E5544; /* muted body */
+  --stone-500: #7A7060; /* captions, meta */
+  --stone-400: #9A9180; /* disabled, faint meta */
+  --stone-300: #B9B1A0; /* hairlines on light (strong) */
+
+  /* ---- Bone (warm paper scale) ---- */
+  --bone-300: #D9D1BF;  /* hairlines / dividers on light */
+  --bone-200: #E7E0D0;  /* subtle fills, track */
+  --bone-100: #F1EBDD;  /* raised paper */
+  --paper:    #F6F1E7;  /* DEFAULT page surface */
+  --paper-raised: #FBF7EE;
+  --white:    #FFFFFF;
+
+  /* ---- Brass (primary accent) ---- */
+  --brass-700: #7E5E26;
+  --brass-600: #9A732F;
+  --brass-500: #B98C4A;  /* PRIMARY accent */
+  --brass-400: #CDA85F;  /* accent on dark / hover-bright */
+  --brass-300: #E0C786;  /* light tints, focus rings */
+  --brass-100: #EFE2C2;  /* faint wash */
+
+  /* ---- Supporting hues (status + alt territories) ---- */
+  --jade-600:    #2C6450;
+  --jade-500:    #347C63;   /* success / "Vanguard" alt accent */
+  --jade-100:    #D8E6DE;
+  --cinnabar-600:#A33326;
+  --cinnabar-500:#BC4030;   /* danger / "Almanac" alt accent (seal red) */
+  --cinnabar-400:#D45B43;   /* cinnabar on dark / hover-bright */
+  --cinnabar-300:#E89279;   /* light tint accents */
+  --cinnabar-100:#F2DAD3;
+  --amber-500:   #C08A2E;   /* warning */
+  --amber-100:   #F2E4C6;
+
+  /* ============================================================
+     SEMANTIC ALIASES — default (light / bone surface)
+     ============================================================ */
+  --bg:              var(--paper);
+  --surface:         var(--paper-raised);
+  --surface-sunken:  var(--bone-100);
+  --surface-inverse: var(--ink-800);
+
+  --text-strong:  var(--ink-800);
+  --text-body:    var(--stone-700);
+  --text-muted:   var(--stone-500);
+  --text-faint:   var(--stone-400);
+  --text-on-accent: var(--ink-900);
+  --text-inverse: var(--paper);
+
+  --accent:        var(--brass-500);
+  --accent-strong: var(--brass-600);
+  --accent-hover:  var(--brass-600);
+  --accent-tint:   var(--brass-100);
+  --on-accent:     var(--ink-900);
+
+  --border:        var(--bone-300);
+  --border-strong: var(--stone-300);
+  --border-faint:  var(--bone-200);
+  --hairline:      color-mix(in oklab, var(--ink-800) 14%, transparent);
+
+  --focus-ring:    var(--brass-400);
+
+  /* Decor — meridian grid + lines (theme-aware) */
+  --decor-grid:    color-mix(in oklab, var(--ink-800) 6%, transparent);
+  --decor-line:    color-mix(in oklab, var(--accent) 45%, transparent);
+
+  --success: var(--jade-500);
+  --warning: var(--amber-500);
+  --danger:  var(--cinnabar-500);
+
+  /* Selection */
+  --select-bg: var(--brass-300);
+}
+
+/* ============================================================
+   INK SECTIONS — drop onto any dark band/hero/footer
+   ============================================================ */
+[data-theme="ink"] {
+  --bg:              var(--ink-800);
+  --surface:         var(--ink-700);
+  --surface-sunken:  var(--ink-900);
+  --surface-inverse: var(--paper);
+
+  --text-strong:  var(--paper);
+  --text-body:    var(--bone-200);
+  --text-muted:   var(--stone-400);
+  --text-faint:   var(--stone-500);
+  --text-inverse: var(--ink-900);
+
+  --accent:        var(--brass-400);
+  --accent-strong: var(--brass-300);
+  --accent-hover:  var(--brass-300);
+  --accent-tint:   color-mix(in oklab, var(--brass-400) 16%, transparent);
+  --on-accent:     var(--ink-900);
+
+  --border:        var(--ink-600);
+  --border-strong: var(--ink-500);
+  --border-faint:  color-mix(in oklab, var(--bone-200) 10%, transparent);
+  --hairline:      color-mix(in oklab, var(--bone-200) 16%, transparent);
+
+  --focus-ring:    var(--brass-300);
+
+  --decor-grid:    color-mix(in oklab, var(--bone-200) 8%, transparent);
+  --decor-line:    color-mix(in oklab, var(--accent) 38%, transparent);
+
+  background: var(--bg);
+  color: var(--text-body);
+}
+
+::selection { background: var(--select-bg); color: var(--ink-900); }

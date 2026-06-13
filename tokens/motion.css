@@ -1,0 +1,31 @@
+/* ============================================================
+   Asia-Connect — Motion
+   Quiet confidence: short, eased, no bounce. Movement is
+   measured — like a seasoned operator. Always respect
+   prefers-reduced-motion.
+   ============================================================ */
+
+:root {
+  --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1);   /* @kind other */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);            /* @kind other */
+  --ease-in: cubic-bezier(0.4, 0, 1, 1); /* @kind other */
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */
+
+  --dur-instant: 90ms; /* @kind other */
+  --dur-fast: 160ms; /* @kind other */
+  --dur-base: 240ms; /* @kind other */
+  --dur-slow: 420ms; /* @kind other */
+  --dur-slower: 680ms; /* @kind other */
+
+  --hover-lift: -2px;       /* @kind spacing */
+  --press-scale: 0.985;     /* @kind other */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

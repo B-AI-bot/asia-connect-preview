@@ -1,0 +1,10 @@
+/* ============================================================
+   Asia-Connect — Webfonts
+   Newsreader      → editorial display + serif voice (authority)
+   Schibsted Grotesk → text / UI grotesque (clarity)
+   IBM Plex Mono   → labels, coordinates, data (precision)
+   Loaded from Google Fonts. If self-hosting, swap these @import
+   lines for local @font-face rules pointing at /assets/fonts.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..720;1,6..72,200..720&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap');

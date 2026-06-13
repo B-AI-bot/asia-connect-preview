@@ -1,0 +1,93 @@
+<!-- @dsCard group="Website" viewport="1280x880" name="Website — interactive UI kit" subtitle="Meridian ⇄ Almanac · Home · Services · Partners · Insight · Newsletter · Concierge" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asia-Connect — Executive Partners</title>
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="site.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="data.js"></script>
+<style>
+  html, body { margin: 0; background: var(--bg); }
+  .ac-screen-enter { animation: acFade var(--dur-slow) var(--ease-out); }
+  @keyframes acFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @keyframes acBlink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+  @keyframes acPulse { 0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 45%, transparent); } 70% { box-shadow: 0 0 0 12px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+  /* Concierge launcher */
+  .ac-launcher { position: fixed; right: clamp(16px, 3vw, 32px); bottom: clamp(16px, 3vw, 32px); z-index: 120;
+    display: inline-flex; align-items: center; gap: 11px; padding: 11px 18px 11px 13px; cursor: pointer;
+    background: var(--ink-800); color: var(--paper); border: 1px solid var(--ink-600);
+    border-radius: var(--radius-pill); box-shadow: var(--shadow-lg); font-family: var(--font-text); font-weight: 600; font-size: var(--text-sm);
+    transition: transform var(--dur-fast) var(--ease-standard); }
+  .ac-launcher:hover { transform: translateY(-2px); }
+  .ac-launcher img { width: 26px; height: 26px; }
+  .ac-launcher .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: acPulse 2.4s infinite; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="SiteChrome.jsx"></script>
+<script type="text/babel" src="RoutingConcierge.jsx"></script>
+<script type="text/babel" src="HomeScreen.jsx"></script>
+<script type="text/babel" src="ServicesScreen.jsx"></script>
+<script type="text/babel" src="PartnersScreen.jsx"></script>
+<script type="text/babel" src="InsightScreen.jsx"></script>
+<script type="text/babel" src="NewsletterScreen.jsx"></script>
+<script type="text/babel" src="ContactScreen.jsx"></script>
+<script type="text/babel" data-presets="env,react">
+  const { useState } = React;
+
+  function App() {
+    const [screen, setScreen] = useState('home');
+    const [brand, setBrand] = useState('meridian');
+    const [agent, setAgent] = useState(false);
+    const [prefill, setPrefill] = useState(null);
+
+    const go = (id, pf) => { setPrefill(pf || null); setScreen(id); window.scrollTo({ top: 0, behavior: 'auto' }); };
+    const openAgent = () => setAgent(true);
+
+    const SCREENS = {
+      home: window.HomeScreen, services: window.ServicesScreen, partners: window.PartnersScreen,
+      insight: window.InsightScreen, newsletter: window.NewsletterScreen, contact: window.ContactScreen,
+    };
+    const Screen = SCREENS[screen] || window.HomeScreen;
+    const onInk = brand === 'meridian' && screen !== 'insight';
+    const bandTheme = brand === 'almanac' ? 'almanac' : 'ink';
+
+    return (
+      <div className="ac-site" data-brand={brand === 'almanac' ? 'almanac' : undefined}>
+        <window.SiteHeader screen={screen} go={go} onInk={onInk} brand={brand} setBrand={setBrand} openAgent={openAgent} />
+        <main key={screen} className="ac-screen-enter">
+          <Screen go={go} openAgent={openAgent} prefill={prefill} bandTheme={bandTheme} />
+        </main>
+        <window.SiteFooter go={go} brand={brand} openAgent={openAgent} bandTheme={bandTheme} />
+
+        {!agent && (
+          <button className="ac-launcher" onClick={openAgent} aria-label="Open the concierge">
+            <img src="../../assets/mark-inverse.svg" alt="" />
+            <span>Ask the concierge</span>
+            <span className="dot"></span>
+          </button>
+        )}
+        <window.RoutingConcierge open={agent} onClose={() => setAgent(false)} navigate={go} bandTheme={bandTheme} />
+      </div>
+    );
+  }
+
+  function boot() {
+    const ready = window.AsiaConnectDesignSystem_f91cce && window.AC_DATA && window.SiteHeader &&
+      window.HomeScreen && window.NewsletterScreen && window.RoutingConcierge && window.ContactScreen;
+    if (!ready) return setTimeout(boot, 40);
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  }
+  boot();
+</script>
+</body>
+</html>

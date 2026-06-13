@@ -1,0 +1,145 @@
+/* ============================================================
+   Asia-Connect — Website UI kit layout helpers
+   Token-driven: works under both Meridian (default) and
+   [data-brand="almanac"]. Brand visuals come from tokens.
+   ============================================================ */
+
+.ac-site { background: var(--bg); color: var(--text-body); min-height: 100%; }
+
+/* ---- Header ---- */
+.ac-header {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in oklab, var(--bg) 82%, transparent);
+  backdrop-filter: blur(var(--blur-md)); -webkit-backdrop-filter: blur(var(--blur-md));
+  border-bottom: 1px solid var(--border);
+}
+.ac-header.on-ink {
+  background: color-mix(in oklab, var(--ink-900) 70%, transparent);
+  border-bottom-color: var(--ink-600);
+}
+.ac-header-inner { display: flex; align-items: center; gap: 28px; height: 76px; }
+.ac-nav { display: flex; align-items: center; gap: 26px; margin-left: auto; }
+.ac-navlink {
+  font-family: var(--font-text); font-size: var(--text-sm); font-weight: 500;
+  color: var(--text-body); letter-spacing: -0.005em; cursor: pointer;
+  padding: 6px 0; position: relative; transition: color var(--dur-fast) var(--ease-standard); background: none; border: none;
+}
+.ac-navlink:hover, .ac-navlink.active { color: var(--text-strong); }
+.ac-navlink.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--accent); }
+.on-ink .ac-navlink { color: var(--bone-200); }
+.on-ink .ac-navlink:hover, .on-ink .ac-navlink.active { color: var(--paper); }
+
+/* ---- Logo lockup ---- */
+.ac-logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.ac-logo img { width: 38px; height: 38px; }
+.ac-logo .nm { font-family: var(--font-display); font-weight: 500; font-size: 21px; line-height: 1; letter-spacing: -0.02em; color: var(--text-strong); }
+.ac-logo .sub { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent-strong); margin-top: 3px; }
+.on-ink .ac-logo .nm { color: var(--paper); }
+
+/* ---- Brand switcher (Meridian / Almanac) ---- */
+.ac-brandswitch { display: inline-flex; align-items: center; gap: 2px; padding: 3px; border: 1px solid var(--border); border-radius: var(--radius-pill); background: color-mix(in oklab, var(--bg) 60%, transparent); }
+.on-ink .ac-brandswitch { border-color: var(--ink-600); }
+.ac-brandswitch button { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 12px; border: none; background: none; color: var(--text-muted); border-radius: var(--radius-pill); cursor: pointer; transition: color var(--dur-fast), background var(--dur-fast); }
+.on-ink .ac-brandswitch button { color: var(--bone-200); }
+.ac-brandswitch button.on { background: var(--accent); color: var(--on-accent); }
+
+/* ---- Bands & meridian motif ---- */
+.ac-band { position: relative; overflow: hidden; background: var(--bg); color: var(--text-body); }
+.ac-grid-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(var(--decor-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--decor-grid) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+.ac-meridian { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--decor-line); }
+.ac-node { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent) 18%, transparent); }
+
+.ac-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }
+.ac-rule-grow { flex: 1; height: 1px; background: var(--border); }
+
+/* ---- Footer (token-driven; light in Almanac, ink in Meridian) ---- */
+.ac-footer { background: var(--bg); color: var(--text-body); border-top: 1px solid var(--border); }
+.ac-foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; padding-block: 72px 0; }
+.ac-foot-link { display: block; color: var(--text-muted); font-size: var(--text-sm); padding: 6px 0; transition: color var(--dur-fast); cursor: pointer; }
+.ac-foot-link:hover { color: var(--accent); }
+.ac-foot-h { font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 14px; }
+.ac-divider { height: 1px; background: var(--border); }
+
+/* ---- Utility ---- */
+[data-lucide] { width: 1em; height: 1em; }
+
+/* ============================================================
+   Editorial figure placeholder (carries an image-gen prompt)
+   Used in the newsletter / insight surfaces until real art lands.
+   ============================================================ */
+.ac-fig { margin: 34px 0; }
+.ac-fig-frame {
+  position: relative; overflow: hidden; border-radius: var(--radius-md);
+  border: 1px solid var(--border); background: var(--surface-sunken);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 30px;
+}
+.ac-fig-frame::before { /* meridian grid texture */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(var(--decor-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--decor-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(120% 120% at 50% 30%, #000 35%, transparent 80%);
+  mask-image: radial-gradient(120% 120% at 50% 30%, #000 35%, transparent 80%);
+}
+.ac-fig-seal { width: 46px; height: 46px; opacity: 0.9; position: relative; }
+.ac-fig-kind {
+  position: relative; font-family: var(--font-mono); font-size: var(--text-label);
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-strong);
+  margin-top: 16px; display: flex; align-items: center; gap: 10px;
+}
+.ac-fig-kind .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.ac-fig-title {
+  position: relative; font-family: var(--font-display); font-style: italic;
+  font-size: var(--text-lg); color: var(--text-muted); margin-top: 6px; max-width: 44ch;
+}
+.ac-fig-prompt {
+  position: relative; width: 100%; margin-top: 20px; text-align: left;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 14px 16px; display: flex; gap: 14px; align-items: flex-start;
+}
+.ac-fig-prompt .pl { flex: none; font-family: var(--font-mono); font-size: var(--text-micro); letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); padding-top: 2px; }
+.ac-fig-prompt .pt { font-family: var(--font-mono); font-size: var(--text-xs); line-height: 1.6; color: var(--text-body); }
+.ac-fig-copy {
+  flex: none; align-self: center; font-family: var(--font-mono); font-size: var(--text-micro);
+  letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+  border: 1px solid var(--border-strong); background: transparent; color: var(--text-strong);
+  padding: 7px 11px; border-radius: var(--radius-xs); transition: border-color var(--dur-fast), color var(--dur-fast), background var(--dur-fast); white-space: nowrap;
+}
+.ac-fig-copy:hover { border-color: var(--accent); color: var(--accent-strong); }
+.ac-fig-copy.done { border-color: var(--success); color: var(--success); }
+.ac-fig-cap { font-family: var(--font-text); font-size: var(--text-sm); color: var(--text-faint); margin-top: 12px; display: flex; gap: 10px; align-items: baseline; }
+.ac-fig-cap .idx { font-family: var(--font-mono); color: var(--accent-strong); letter-spacing: 0.06em; }
+
+/* ---- Newsletter readability ---- */
+.ac-nl-body { font-size: var(--text-lg); }
+.ac-nl-body p { font-size: var(--text-lg); color: var(--text-body); line-height: 1.75; margin: 0 0 20px; }
+.ac-nl-dropcap::first-letter {
+  font-family: var(--font-display); font-weight: 500; float: left;
+  font-size: 4.6em; line-height: 0.78; padding: 6px 14px 0 0; color: var(--accent);
+}
+.ac-fieldnotes { margin: 30px 0 8px; border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; }
+.ac-fieldnotes-h { display: flex; align-items: center; gap: 12px; padding: 14px 22px; background: var(--surface-sunken); border-bottom: 1px solid var(--border); }
+.ac-fieldnotes-li { display: flex; gap: 16px; padding: 16px 22px; align-items: baseline; }
+.ac-fieldnotes-li + .ac-fieldnotes-li { border-top: 1px solid var(--border-faint); }
+.ac-fieldnotes-li .k { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--accent-strong); flex: none; }
+.ac-pullquote {
+  margin: 36px 0; padding-left: 26px; border-left: 2px solid var(--accent);
+  font-family: var(--font-display); font-weight: 400; font-style: italic;
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); line-height: 1.34; letter-spacing: -0.01em;
+  color: var(--text-strong); text-wrap: balance;
+}
+
+@media (max-width: 860px) {
+  .ac-nav { gap: 16px; }
+  .ac-navlink, .ac-brandswitch { display: none; }
+  .ac-foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .ac-fig-prompt { flex-wrap: wrap; }
+}

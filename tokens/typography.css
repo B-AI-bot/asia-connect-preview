@@ -1,0 +1,94 @@
+/* ============================================================
+   Asia-Connect — Typography
+   Display: Newsreader (editorial serif, optical sizing)
+   Text:    Schibsted Grotesk (grotesque)
+   Mono:    IBM Plex Mono (labels / coordinates / data)
+   ============================================================ */
+
+:root {
+  --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-text: 'Schibsted Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* ---- Weights ---- */
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ---- Display sizes (fluid; Newsreader) ---- */
+  --text-display-1: clamp(3.25rem, calc(1.6rem + 6.4vw), 6.5rem);   /* hero */
+  --text-display-2: clamp(2.5rem, calc(1.5rem + 4vw), 4.5rem);
+  --text-display-3: clamp(2rem, calc(1.4rem + 2.6vw), 3.25rem);
+
+  /* ---- Headings ---- */
+  --text-h1: clamp(1.85rem, calc(1.3rem + 2vw), 2.75rem);
+  --text-h2: clamp(1.5rem, calc(1.2rem + 1.3vw), 2.1rem);
+  --text-h3: clamp(1.25rem, calc(1.05rem + 0.7vw), 1.6rem);
+  --text-h4: 1.2rem;
+
+  /* ---- Body ---- */
+  --text-lead: clamp(1.15rem, calc(1.05rem + 0.4vw), 1.4rem);
+  --text-lg: 1.1875rem;   /* 19px */
+  --text-base: 1.0625rem; /* 17px */
+  --text-sm: 0.9375rem;   /* 15px */
+  --text-xs: 0.8125rem;   /* 13px */
+
+  /* ---- Labels / overline / mono ---- */
+  --text-label: 0.78125rem; /* 12.5px */
+  --text-micro: 0.6875rem;  /* 11px */
+
+  /* ---- Line heights ---- */
+  --leading-tight: 1.04;
+  --leading-snug: 1.16;
+  --leading-display: 1.06;
+  --leading-heading: 1.14;
+  --leading-body: 1.62;
+  --leading-relaxed: 1.72;
+
+  /* ---- Letter spacing ---- */
+  --tracking-display: -0.022em;  /* large serif pulls in */
+  --tracking-heading: -0.012em;
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-label: 0.16em;      /* overlines */
+  --tracking-mono: 0.04em;
+
+  /* ---- Measure ---- */
+  --measure: 64ch;
+  --measure-narrow: 42ch;
+  --measure-wide: 78ch;
+}
+
+/* ---- Optical sizing on for Newsreader ---- */
+.font-display, [class*="display"] { font-optical-sizing: auto; }
+
+/* ============================================================
+   Utility type classes (used by cards / kits)
+   ============================================================ */
+.t-display-1 { font-family: var(--font-display); font-weight: var(--weight-regular); font-size: var(--text-display-1); line-height: var(--leading-display); letter-spacing: var(--tracking-display); font-optical-sizing: auto; }
+.t-display-2 { font-family: var(--font-display); font-weight: var(--weight-regular); font-size: var(--text-display-2); line-height: var(--leading-display); letter-spacing: var(--tracking-display); font-optical-sizing: auto; }
+.t-display-3 { font-family: var(--font-display); font-weight: var(--weight-regular); font-size: var(--text-display-3); line-height: 1.1; letter-spacing: var(--tracking-heading); font-optical-sizing: auto; }
+
+.t-h1 { font-family: var(--font-display); font-weight: var(--weight-medium); font-size: var(--text-h1); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); }
+.t-h2 { font-family: var(--font-display); font-weight: var(--weight-medium); font-size: var(--text-h2); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); }
+.t-h3 { font-family: var(--font-text); font-weight: var(--weight-semibold); font-size: var(--text-h3); line-height: var(--leading-snug); letter-spacing: var(--tracking-tight); }
+
+.t-lead { font-family: var(--font-text); font-weight: var(--weight-regular); font-size: var(--text-lead); line-height: var(--leading-relaxed); color: var(--text-body); }
+.t-body { font-family: var(--font-text); font-weight: var(--weight-regular); font-size: var(--text-base); line-height: var(--leading-body); color: var(--text-body); }
+.t-sm   { font-family: var(--font-text); font-size: var(--text-sm); line-height: var(--leading-body); }
+
+/* Overline / kicker — the recurring "coordinate label" voice */
+.t-overline {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.t-mono { font-family: var(--font-mono); font-size: var(--text-sm); letter-spacing: var(--tracking-mono); }
+
+/* Serif italic editorial accent (pull-quotes, emphasis) */
+.t-editorial-italic { font-family: var(--font-display); font-style: italic; font-weight: var(--weight-regular); }

@@ -1,0 +1,58 @@
+/* ============================================================
+   Asia-Connect — Brand territories
+   Default (no attribute) = "Meridian" (ink & brass).
+   [data-brand="almanac"] = "Almanac" (bone & cinnabar): cinnabar
+   replaces brass across the page. Dark "bands" use data-theme:
+     • Meridian band  → data-theme="ink"      (dark, in colors.css)
+     • Almanac band   → data-theme="almanac"  (light register, below)
+   The kit threads a `bandTheme` value so each band picks the right
+   single-attribute scope — no compound selectors, so every token
+   registers cleanly.
+   ============================================================ */
+
+[data-brand="almanac"] {
+  --accent:        var(--cinnabar-500);
+  --accent-strong: var(--cinnabar-600);
+  --accent-hover:  var(--cinnabar-600);
+  --accent-tint:   var(--cinnabar-100);
+  --on-accent:     var(--white);
+
+  --focus-ring:    var(--cinnabar-500);
+  --select-bg:     var(--cinnabar-100);
+
+  --decor-grid:    color-mix(in oklab, var(--ink-800) 5.5%, transparent);
+  --decor-line:    color-mix(in oklab, var(--cinnabar-500) 34%, transparent);
+}
+
+/* Almanac "band" — a light, scholarly register where Meridian goes dark */
+[data-theme="almanac"] {
+  --bg:              var(--bone-100);
+  --surface:         var(--paper-raised);
+  --surface-sunken:  var(--bone-200);
+  --surface-inverse: var(--ink-800);
+
+  --text-strong:  var(--ink-800);
+  --text-body:    var(--stone-700);
+  --text-muted:   var(--stone-500);
+  --text-faint:   var(--stone-400);
+  --text-inverse: var(--paper);
+
+  --accent:        var(--cinnabar-500);
+  --accent-strong: var(--cinnabar-600);
+  --accent-hover:  var(--cinnabar-600);
+  --accent-tint:   var(--cinnabar-100);
+  --on-accent:     var(--white);
+
+  --border:        var(--bone-300);
+  --border-strong: var(--stone-300);
+  --border-faint:  var(--bone-200);
+  --hairline:      color-mix(in oklab, var(--ink-800) 12%, transparent);
+
+  --focus-ring:    var(--cinnabar-500);
+
+  --decor-grid:    color-mix(in oklab, var(--ink-800) 5%, transparent);
+  --decor-line:    color-mix(in oklab, var(--cinnabar-500) 30%, transparent);
+
+  background: var(--bg);
+  color: var(--text-body);
+}
